@@ -39,7 +39,7 @@ module.exports = function(hot, dev) {
             new webpack.optimize.OccurrenceOrderPlugin()
         ];
     }
-    config.plugins = [new ExtractTextPlugin("nationalmap.css", {disable: false, ignoreOrder: true})];
+    config.plugins = [new ExtractTextPlugin("leylines.css", {disable: false, ignoreOrder: true})];
 
     return configureWebpack(path.resolve(__dirname, '../'), config, hot, hot, ExtractTextPlugin, true);
 };
