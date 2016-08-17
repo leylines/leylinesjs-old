@@ -11,13 +11,13 @@ $color-secondary: #06CCFF;
 
 $animation-fast: 0.1s;
 
-$dark: #3F4854;
-$dark-with-overlay: #5C636E;
+$dark: #000000;
+$dark-with-overlay: #404040;
 $dark-lighter: #595B60;
 $grey: #888888;
 $grey-lighter: #ddd;
 $field-border: #ddd;
-$overlay: rgba(255, 255, 255, 0.15);
+$overlay: #404040;
 
 $text-dark: #888;
 $faint-bg: #f5f5f5;
@@ -80,7 +80,6 @@ $radius-small: 2px;
 $ring-width: 10px;
 $compass-width: 55px;
 
-
 //screen sizes
 $sm : 768px;
 $md: 992px;
@@ -95,8 +94,6 @@ $chart-text-color: #fff;
 $chart-line-color: #ccc;
 $chart-darker: darken($dark, 8%);
 
-
-
-$charcoal-grey: #3f4854;
+$charcoal-grey: #606060;
 $turquoise-blue: #08abd5;
 
