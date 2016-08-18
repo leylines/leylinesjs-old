@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import DataCatalogTab from './Tabs/DataCatalogTab.jsx';
 import MyDataTab from './Tabs/MyDataTab/MyDataTab.jsx';
+import CreateGridTab from './Tabs/CreateGridTab/CreateGridTab.jsx';
 import ObserveModelMixin from '../ObserveModelMixin';
 
 import Styles from './tabs.scss';
@@ -33,7 +34,14 @@ const Tabs = React.createClass({
                     panel: <MyDataTab terria={this.props.terria}
                                       viewState={this.props.viewState}
                     />
-                }
+                },
+                {
+                    name: 'Create Grid',
+                    title: 'create-grid',
+                    panel: <CreateGridTab terria={this.props.terria}
+                                           viewState={this.props.viewState}
+                    />
+                },
             ]
         };
     },
