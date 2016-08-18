@@ -1,0 +1,61 @@
+@import '~terriajs-variables';
+@import '../../../../Sass/common/mixins';
+
+@include empty-module("inner");
+@include empty-module("url-input");
+@include empty-module("text-input");
+
+.label{
+  composes: label from '../../../../Sass/common/_labels.scss';
+  padding-left: 0;
+  clear: left;
+}
+
+.dropdown {
+  width: 100%;
+
+  &__dropdown-list {
+    box-shadow: $box-shadow;
+    margin-top: $padding-small;
+
+    &--is-open {
+      height: 190px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}
+
+// Add data from local form
+//
+// Markup:
+// <form class='file-input'>
+// <input type='file'/>
+// <label class='btn btn--file-input'>Upload File</label>
+// </form>
+//
+// Style guide: 3.3
+//
+.text-input {
+  &__text-box {
+    composes: field from '../../../../Sass/common/_form.scss';
+    width: calc(50% - 25px);
+    float: left;
+  }
+}
+.url-input {
+  &__text-box {
+    composes: field from '../../../../Sass/common/_form.scss';
+    width: calc(100% - 50px);
+    float: left;
+  }
+
+  &__btn {
+    composes: btn from '../../../../Sass/common/_buttons.scss';
+    composes: btn-transparent from '../../../../Sass/common/_buttons.scss';
+    composes: btn-primary from '../../../../Sass/common/_buttons.scss';
+
+    width: 50px;
+    float: left;
+  }
+}
