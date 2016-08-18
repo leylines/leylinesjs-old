@@ -36,7 +36,7 @@ const Tabs = React.createClass({
                     />
                 },
                 {
-                    name: 'Create Grid',
+                    name: 'Create Grid (alpha)',
                     title: 'create-grid',
                     panel: <CreateGridTab terria={this.props.terria}
                                            viewState={this.props.viewState}
