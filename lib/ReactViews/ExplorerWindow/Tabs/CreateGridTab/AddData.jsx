@@ -77,21 +77,21 @@ const AddData = React.createClass({
     onXCoordChange(event) {
         this.setState({
             xCoord: event.target.value,
-            remoteUrl: baseURL + event.target.value + "/" + this.state.yCoord + "/" + this.state.angle + "/" + this.state.gridType.value + "/1"
+            remoteUrl: baseURL + event.target.value + "/" + this.state.yCoord + "/" + this.state.angle + "/" + this.state.gridType.value + "/" + this.state.gridLevel.value
         });
     },
 
     onYCoordChange(event) {
         this.setState({
             yCoord: event.target.value,
-            remoteUrl: baseURL + this.state.xCoord + "/" + event.target.value + "/" + this.state.angle + "/" + this.state.gridType.value + "/1"
+            remoteUrl: baseURL + this.state.xCoord + "/" + event.target.value + "/" + this.state.angle + "/" + this.state.gridType.value + "/" + this.state.gridLevel.value
         });
     },
 
     onAngleChange(event) {
         this.setState({
             angle: event.target.value,
-            remoteUrl: baseURL + this.state.xCoord + "/" + this.state.yCoord + "/" + event.target.value + "/" + this.state.gridType.value + "/1"
+            remoteUrl: baseURL + this.state.xCoord + "/" + this.state.yCoord + "/" + event.target.value + "/" + this.state.gridType.value + "/" + this.state.gridLevel.value
         });
     },
 
