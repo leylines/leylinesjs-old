@@ -14,7 +14,7 @@ import Styles from './add-data.scss';
 
 // Local and remote data have different dataType options
 const gridType = getGridType().gridType;
-const baseURL = window.location.protocol + "//" + window.location.host + "/api/createGridLines/";
+const baseURL = window.location.protocol + "//" + window.location.host + "/api/createGrid/";
 
 /**
  * Add data panel in modal window -> Create Grid tab
