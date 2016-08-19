@@ -62,7 +62,7 @@ const AddData = React.createClass({
         const that = this;
         let promise;
         const newItem = createCatalogMemberFromType('czml', that.props.terria);
-        newItem.name = '[' + that.state.gridType.value + '][' + that.state.xCoord + '][' + that.state.yCoord + '][' + that.state.angle + ']';
+        newItem.name = '[' + that.state.gridType.value + '][' + that.state.xCoord + '][' + that.state.yCoord + '][' + that.state.angle + '][' + that.state.gridLevel.value + ']';
         newItem.url = url;
         promise = newItem.load().then(function () {
             return newItem;
