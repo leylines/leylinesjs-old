@@ -15,6 +15,8 @@ import Styles from './add-data.scss';
 // Local and remote data have different dataType options
 const gridType = getGridType().gridType;
 const baseURL = window.location.protocol + "//" + window.location.host + "/api/createGrid/";
+var gridLevel = [{ value: 'points', name: 'Points' },{ value: '1', name: 'Level 1' }, { value: 'area', name: 'Areas' } ]
+
 
 /**
  * Add data panel in modal window -> Create Grid tab
@@ -30,6 +32,7 @@ const AddData = React.createClass({
     getInitialState() {
         return {
             gridType: gridType[0], // By default select the first item (auto)
+            gridLevel: gridLevel[0],
             remoteUrl: baseURL,
             xCoord: undefined,
             yCoord: undefined,
@@ -37,12 +40,20 @@ const AddData = React.createClass({
         };
     },
 
-    selectGridOption(option) {
+    selectGridType(option) {
         this.setState({
             gridType: option,
-            remoteUrl: baseURL + this.state.xCoord + "/" + this.state.yCoord + "/" + this.state.angle + "/" + option.value + "/1"
+            remoteUrl: baseURL + this.state.xCoord + "/" + this.state.yCoord + "/" + this.state.angle + "/" + option.value + "/" + this.state.gridLevel.value
         });
     },
+
+    selectGridLevel(option) {
+        this.setState({
+            gridLevel: option,
+            remoteUrl: baseURL + this.state.xCoord + "/" + this.state.yCoord + "/" + this.state.angle + "/" + this.state.gridType.value + "/" + option.value
+        });
+    },
+
 
     handleUrl(e) {
         const url = this.state.remoteUrl;
@@ -96,9 +107,11 @@ const AddData = React.createClass({
         };
         return (
             <div>
-                <label className={Styles.label}><strong>Step 1:</strong> Select type of Grid to add: </label>
+                <label className={Styles.label}><strong>Step 1:</strong> Select type of grid to add: </label>
                 <Dropdown options={gridType} selected={this.state.gridType}
-                      selectOption={this.selectGridOption} matchWidth={true} theme={dropdownTheme}/>
+                      selectOption={this.selectGridType} matchWidth={true} theme={dropdownTheme}/>
+                <Dropdown options={gridLevel} selected={this.state.gridLevel}
+                      selectOption={this.selectGridLevel} matchWidth={true} theme={dropdownTheme}/>
                 <label className={Styles.label}><strong>Step 2:</strong> Enter the coordinates of the first point:</label>
                 <input value={this.state.xCoord} onChange={this.onXCoordChange}
                        className={Styles.textInputTextBox}
