@@ -2,7 +2,7 @@ import React from 'react';
 
 import DataCatalogGroup from '../../../DataCatalog/DataCatalogGroup.jsx';
 import DataPreview from '../../../Preview/DataPreview.jsx';
-import AddData from './AddData.jsx';
+import AddGridData from './AddGridData.jsx';
 import ObserveModelMixin from '../../../ObserveModelMixin';
 
 import Styles from './my-data-tab.scss';
@@ -42,7 +42,7 @@ const CreateGridTab = React.createClass({
                                 </button>
                             </If>
                             <h3>Adding your own Grid</h3>
-                            <AddData terria={this.props.terria}
+                            <AddGridData terria={this.props.terria}
                                      viewState={this.props.viewState}/>
                         </div>
                     </If>

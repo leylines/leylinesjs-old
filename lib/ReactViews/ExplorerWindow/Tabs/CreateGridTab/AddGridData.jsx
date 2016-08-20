@@ -10,7 +10,7 @@ import ObserveModelMixin from '../../../ObserveModelMixin';
 import TerriaError from '../../../../Core/TerriaError';
 import addUserFiles from '../../../../Models/addUserFiles';
 
-import Styles from './add-data.scss';
+import Styles from './add-grid-data.scss';
 
 // Local and remote data have different dataType options
 const gridType = getGridType().gridType;
