@@ -12,7 +12,8 @@
 }
 
 .dropdown {
-  width: 100%;
+  width: calc(50% - 25px);
+  float: left;
 
   &__dropdown-list {
     box-shadow: $box-shadow;
