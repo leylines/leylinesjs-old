@@ -35,9 +35,9 @@ const AddGridData = React.createClass({
             gridType: gridType[0], // By default select the first item (auto)
             gridLevel: gridLevel[0],
             remoteUrl: baseURL,
-            xCoord: undefined,
-            yCoord: undefined,
-            angle: undefined
+            xCoord: 0.0,
+            yCoord: 0.0,
+            angle: 0.0
         };
     },
 
@@ -98,10 +98,6 @@ const AddGridData = React.createClass({
         });
     },
 
-    onFinishDroppingFile() {
-        this.props.viewState.isDraggingDroppingFile = false;
-    },
-
     renderPanels() {
         const dropdownTheme = {
             dropdown: Styles.dropdown,
@@ -119,7 +115,7 @@ const AddGridData = React.createClass({
                 <input value={this.state.xCoord} onChange={this.onXCoordChange}
                        className={Styles.textInputTextBox}
                        type='number'
-                       step='0.001'
+                       step='0.000001'
                        min="-90"
                        max="90"
                        pattern="[0-9.]*"
@@ -127,12 +123,18 @@ const AddGridData = React.createClass({
                 <input value={this.state.yCoord} onChange={this.onYCoordChange}
                        className={Styles.textInputTextBox}
                        type='number'
+                       step='0.000001'
+                       min="-180"
+                       max="180"
                        pattern="[0-9.]*"
                        placeholder='0'/>
                 <label className={Styles.label}><strong>Step 3:</strong> Enter bearing in degrees:</label>
                 <input value={this.state.angle} onChange={this.onAngleChange}
                        className={Styles.textInputTextBox}
                        type='number'
+                       step='0.000001'
+                       min="-360"
+                       max="360"
                        pattern="[0-9.]*"
                        placeholder='0'/>
                 <label className={Styles.label}><strong>Step 4:</strong> Greate Grid:</label>

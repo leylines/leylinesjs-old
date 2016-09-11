@@ -5,7 +5,7 @@ import DataPreview from '../../../Preview/DataPreview.jsx';
 import AddGridData from './AddGridData.jsx';
 import ObserveModelMixin from '../../../ObserveModelMixin';
 
-import Styles from './my-data-tab.scss';
+import Styles from '../MyDataTab/my-data-tab.scss';
 
 // My data tab include Add data section and preview section
 const CreateGridTab = React.createClass({
@@ -41,7 +41,7 @@ const CreateGridTab = React.createClass({
                                     Back
                                 </button>
                             </If>
-                            <h3>Adding your own Grid</h3>
+                            <h3 className={Styles.h3}>Adding your own Grid</h3>
                             <AddGridData terria={this.props.terria}
                                      viewState={this.props.viewState}/>
                         </div>
