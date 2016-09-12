@@ -9,6 +9,7 @@ import getGridType from './getGridType.js';
 import ObserveModelMixin from '../../../ObserveModelMixin';
 import TerriaError from '../../../../Core/TerriaError';
 import addUserFiles from '../../../../Models/addUserFiles';
+import checkGridInput from '../../../../Models/checkGridInput';
 
 import Styles from './add-grid-data.scss';
 
@@ -21,7 +22,7 @@ var gridLevel = [{ value: 'points', name: 'Points' },{ value: '1', name: 'Level 
 /**
  * Add data panel in modal window -> Create Grid tab
  */
-const AddData = React.createClass({
+const AddGridData = React.createClass({
     mixins: [ObserveModelMixin],
 
     propTypes: {
@@ -34,9 +35,9 @@ const AddData = React.createClass({
             gridType: gridType[0], // By default select the first item (auto)
             gridLevel: gridLevel[0],
             remoteUrl: baseURL,
-            xCoord: undefined,
-            yCoord: undefined,
-            angle: undefined
+            xCoord: 0.0,
+            yCoord: 0.0,
+            angle: 0.0
         };
     },
 
@@ -60,18 +61,20 @@ const AddData = React.createClass({
         e.preventDefault();
         this.props.terria.analytics.logEvent('addDataUrl', url);
         const that = this;
-        let promise;
-        const newItem = createCatalogMemberFromType('czml', that.props.terria);
-        newItem.name = '[' + that.state.gridType.value + '][' + that.state.xCoord + '][' + that.state.yCoord + '][' + that.state.angle + '][' + that.state.gridLevel.value + ']';
-        newItem.url = url;
-        promise = newItem.load().then(function () {
-            return newItem;
-        });
-        addUserCatalogMember(this.props.terria, promise).then(addedItem => {
-            if (addedItem && !(addedItem instanceof TerriaError)) {
-                this.props.viewState.myDataIsUploadView = false;
-            }
-        });
+        if (checkGridInput(that.props, that.state)) {
+            let promise;
+            const newItem = createCatalogMemberFromType('czml', that.props.terria);
+            newItem.name = '[' + that.state.gridType.value + '][' + that.state.xCoord + '][' + that.state.yCoord + '][' + that.state.angle + '][' + that.state.gridLevel.value + ']';
+            newItem.url = url;
+            promise = newItem.load().then(function () {
+                return newItem;
+            });
+            addUserCatalogMember(this.props.terria, promise).then(addedItem => {
+                if (addedItem && !(addedItem instanceof TerriaError)) {
+                    this.props.viewState.myDataIsUploadView = false;
+                }
+            });
+        }
     },
 
     onXCoordChange(event) {
@@ -95,10 +98,6 @@ const AddData = React.createClass({
         });
     },
 
-    onFinishDroppingFile() {
-        this.props.viewState.isDraggingDroppingFile = false;
-    },
-
     renderPanels() {
         const dropdownTheme = {
             dropdown: Styles.dropdown,
@@ -112,26 +111,32 @@ const AddData = React.createClass({
                       selectOption={this.selectGridType} matchWidth={true} theme={dropdownTheme}/>
                 <Dropdown options={gridLevel} selected={this.state.gridLevel}
                       selectOption={this.selectGridLevel} matchWidth={true} theme={dropdownTheme}/>
-                <label className={Styles.label}><strong>Step 2:</strong> Enter the coordinates of the first point:</label>
+                <label className={Styles.label}><strong>Step 2:</strong> Enter latitude and longitude of the first point:</label>
                 <input value={this.state.xCoord} onChange={this.onXCoordChange}
                        className={Styles.textInputTextBox}
                        type='number'
-                       step='0.001'
+                       step='0.000001'
                        min="-90"
                        max="90"
                        pattern="[0-9.]*"
-                       placeholder='1'/>
+                       placeholder='0'/>
                 <input value={this.state.yCoord} onChange={this.onYCoordChange}
                        className={Styles.textInputTextBox}
                        type='number'
+                       step='0.000001'
+                       min="-180"
+                       max="180"
                        pattern="[0-9.]*"
-                       placeholder='2'/>
-                <label className={Styles.label}><strong>Step 3:</strong> Enter the angle in degrees:</label>
+                       placeholder='0'/>
+                <label className={Styles.label}><strong>Step 3:</strong> Enter bearing in degrees:</label>
                 <input value={this.state.angle} onChange={this.onAngleChange}
                        className={Styles.textInputTextBox}
                        type='number'
+                       step='0.000001'
+                       min="-360"
+                       max="360"
                        pattern="[0-9.]*"
-                       placeholder='3'/>
+                       placeholder='0'/>
                 <label className={Styles.label}><strong>Step 4:</strong> Greate Grid:</label>
                 <form className={Styles.urlInput} onSubmit={this.handleUrl}>
                     <input value={this.state.remoteUrl}
@@ -163,4 +168,4 @@ function loadFile(viewModel) {
     return createCatalogItemFromFileOrUrl(viewModel.props.terria, viewModel.props.viewState, viewModel.state.remoteUrl, viewModel.state.remoteDataType.value, true);
 }
 
-module.exports = AddData;
+module.exports = AddGridData;

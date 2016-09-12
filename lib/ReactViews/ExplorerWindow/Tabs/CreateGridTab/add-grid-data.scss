@@ -8,11 +8,13 @@
 .label{
   composes: label from '../../../../Sass/common/_labels.scss';
   padding-left: 0;
+  font-size: 0.9rem;
   clear: left;
 }
 
 .dropdown {
   width: calc(50% - 25px);
+  margin-right: 2px;
   float: left;
 
   &__dropdown-list {
@@ -41,6 +43,7 @@
   &__text-box {
     composes: field from '../../../../Sass/common/_form.scss';
     width: calc(50% - 25px);
+    margin-right: 2px;
     float: left;
   }
 }
