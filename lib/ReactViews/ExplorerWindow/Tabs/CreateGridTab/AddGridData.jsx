@@ -34,10 +34,10 @@ const AddGridData = React.createClass({
         return {
             gridType: gridType[0], // By default select the first item (auto)
             gridLevel: gridLevel[0],
-            remoteUrl: baseURL,
-            xCoord: 0.0,
-            yCoord: 0.0,
-            angle: 0.0
+            remoteUrl: baseURL + "0.0/0.0/0.0/" + gridType[0].value + "/" + gridLevel[0].value,
+            xCoord: "0.0",
+            yCoord: "0.0",
+            angle: "0.0"
         };
     },
 
