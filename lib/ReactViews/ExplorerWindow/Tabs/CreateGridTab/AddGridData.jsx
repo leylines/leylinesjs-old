@@ -34,10 +34,10 @@ const AddGridData = React.createClass({
         return {
             gridType: gridType[0], // By default select the first item (auto)
             gridLevel: gridLevel[0],
-            remoteUrl: baseURL,
-            xCoord: 0.0,
-            yCoord: 0.0,
-            angle: 0.0
+            remoteUrl: baseURL + "0.0/0.0/0.0/" + gridType[0].value + "/" + gridLevel[0].value,
+            xCoord: "0.0",
+            yCoord: "0.0",
+            angle: "0.0"
         };
     },
 
@@ -118,16 +118,14 @@ const AddGridData = React.createClass({
                        step='0.000001'
                        min="-90"
                        max="90"
-                       pattern="[0-9.]*"
-                       placeholder='0'/>
+                       pattern="[0-9.]*" />
                 <input value={this.state.yCoord} onChange={this.onYCoordChange}
                        className={Styles.textInputTextBox}
                        type='number'
                        step='0.000001'
                        min="-180"
                        max="180"
-                       pattern="[0-9.]*"
-                       placeholder='0'/>
+                       pattern="[0-9.]*" />
                 <label className={Styles.label}><strong>Step 3:</strong> Enter bearing in degrees:</label>
                 <input value={this.state.angle} onChange={this.onAngleChange}
                        className={Styles.textInputTextBox}
@@ -135,8 +133,7 @@ const AddGridData = React.createClass({
                        step='0.000001'
                        min="-360"
                        max="360"
-                       pattern="[0-9.]*"
-                       placeholder='0'/>
+                       pattern="[0-9.]*" />
                 <label className={Styles.label}><strong>Step 4:</strong> Greate Grid:</label>
                 <form className={Styles.urlInput} onSubmit={this.handleUrl}>
                     <input value={this.state.remoteUrl}
