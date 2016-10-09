@@ -105,7 +105,7 @@
     "socket.io": "1.5.0",
     "svg-sprite-loader": "0.0.29",
     "terriajs-jasmine-ajax": "^3.2.1",
-    "terriajs-server": "^2.5.1",
+    "terriajs-server": "git://github.com/leylines/terriajs-server.git#master",
     "webpack-dev-server": "^1.14.1"
   },
   "peerDependencies": {
