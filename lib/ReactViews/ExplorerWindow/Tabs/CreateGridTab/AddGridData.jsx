@@ -16,7 +16,7 @@ import Styles from './add-grid-data.scss';
 // Local and remote data have different dataType options
 const gridType = getGridType().gridType;
 const baseURL = window.location.protocol + "//" + window.location.host + "/api/createGrid/";
-var gridLevel = [{ value: 'points', name: 'Points' },{ value: '1', name: 'Lines' }, { value: 'area', name: 'Areas' } ]
+var gridLevel = [{ value: 'points', name: 'Points' },{ value: '1', name: 'Lines' }, { value: '2', name: 'Minor Lines' }, { value: 'area', name: 'Areas' } ]
 
 
 /**
