@@ -2,6 +2,17 @@
 Change Log
 ==========
 
+### 4.5.2
+
+* Add support for 'Long' type hint to CSV data for specifying longitude.
+
+### 4.5.1
+
+* The order of the legend for an `ArcGisMapServerCatalogItem` now matches the order used by ArcGIS itself.
+* Large legends are now scaled down to fit within the width of the workbench panel.
+* Improved the styling of links inside the Feature Information panel.
+* Fixed a bug that could cause the Feature Information panel's close button to initially appear in the wrong place, and then jump to the right place when moving the mouse near it.
+
 ### 4.5.0
 
 * Added support for the Sensor Observation Service format, via the `SensorObservationServiceCatalogItem`.
