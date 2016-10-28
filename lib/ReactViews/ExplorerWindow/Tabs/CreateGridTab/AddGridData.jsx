@@ -5,7 +5,7 @@ import addUserCatalogMember from '../../../../Models/addUserCatalogMember';
 import createCatalogItemFromFileOrUrl from '../../../../Models/createCatalogItemFromFileOrUrl';
 import createCatalogMemberFromType from '../../../../Models/createCatalogMemberFromType';
 import Dropdown from '../../../Generic/Dropdown';
-import getGridType from './getGridType.js';
+import gridObjects from './getGridObjects.js';
 import ObserveModelMixin from '../../../ObserveModelMixin';
 import TerriaError from '../../../../Core/TerriaError';
 import addUserFiles from '../../../../Models/addUserFiles';
@@ -14,9 +14,10 @@ import checkGridInput from '../../../../Models/checkGridInput';
 import Styles from './add-grid-data.scss';
 
 // Local and remote data have different dataType options
-const gridType = getGridType().gridType;
+const gridType = gridObjects().gridType;
+const gridLevel = gridObjects().gridLevel;
+const gridMatrix = gridObjects().gridMatrix;
 const baseURL = window.location.protocol + "//" + window.location.host + "/api/createGrid/";
-var gridLevel = [{ value: 'points', name: 'Points' },{ value: '1', name: 'Main Lines' }, { value: '2', name: 'Minor Lines' }, { value: 'area', name: 'Areas' } ]
 
 
 /**
