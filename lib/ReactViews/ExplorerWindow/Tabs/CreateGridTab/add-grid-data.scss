@@ -12,32 +12,7 @@
   clear: left;
 }
 
-.dropdown {
-  width: calc(50% - 25px);
-  margin-right: 2px;
-  float: left;
-
-  &__dropdown-list {
-    box-shadow: $box-shadow;
-    margin-top: $padding-small;
-
-    &--is-open {
-      height: 190px;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-  }
-}
-
 // Add data from local form
-//
-// Markup:
-// <form class='file-input'>
-// <input type='file'/>
-// <label class='btn btn--file-input'>Upload File</label>
-// </form>
-//
-// Style guide: 3.3
 //
 .text-input {
   &__text-box {
@@ -63,3 +38,4 @@
     float: left;
   }
 }
+
