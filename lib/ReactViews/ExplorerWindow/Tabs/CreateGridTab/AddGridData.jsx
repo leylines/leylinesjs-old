@@ -12,7 +12,7 @@ import addUserFiles from '../../../../Models/addUserFiles';
 import checkGridInput from '../../../../Models/checkGridInput';
 
 import Styles from './add-grid-data.scss';
-import SelectStyle from './dropdown.scss';
+import 'react-select/dist/react-select.css';
 
 // Local and remote data have different dataType options
 const GRID = require('./grids');

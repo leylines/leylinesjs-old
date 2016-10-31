@@ -188,7 +188,7 @@ function configureWebpack(terriaJSBasePath, config, devMode, hot, ExtractTextPlu
     if (hot && !disableStyleLoader) {
         config.module.loaders.push({
             include: path.resolve(terriaJSBasePath),
-            test: /\.scss$/,
+            test: /\.(scss|css)$/,
             loaders: [
                 require.resolve('style-loader'),
                 require.resolve('css-loader') + '?sourceMap&modules&camelCase&localIdentName=tjs-[name]__[local]&importLoaders=2',
