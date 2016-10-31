@@ -222,6 +222,7 @@ function configureWebpack(terriaJSBasePath, config, devMode, hot, ExtractTextPlu
     // called node_modules https://github.com/npm/npm/issues/2734
     config.resolve.alias['react'] = path.dirname(require.resolve('react'));
     config.resolve.alias['react-dom'] = path.dirname(require.resolve('react-dom'));
+    config.resolve.alias['react-select'] = path.dirname(require.resolve('react-select'));
 
     return config;
 }
