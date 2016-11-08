@@ -12,7 +12,6 @@ import addUserFiles from '../../../../Models/addUserFiles';
 import checkGridInput from '../../../../Models/checkGridInput';
 
 import Styles from './add-grid-data.scss';
-import 'react-select/dist/react-select.css';
 
 // Local and remote data have different dataType options
 const GRID = require('./grids');
@@ -35,6 +34,7 @@ const AddGridData = React.createClass({
             grid: 'grids',
             type: 'beckerhagens',
             disabled: false,
+            multi: false,
             searchable: this.props.searchable,
             selectGrid: 'beckerhagens',
             selectType: 'point',
@@ -120,8 +120,8 @@ const AddGridData = React.createClass({
         return (
             <div>
                 <label className={Styles.label}><strong>Step 1:</strong> Select type of grid to add: </label>
-                <Select options={gridOptions} simpleValue clearable={this.state.clearable} name="selected-grid" disabled={this.state.disabled} value={this.state.selectGrid} onChange={this.updateGrid} searchable={this.state.searchable} matchWidth={true} />
-                <Select options={typeOptions} simpleValue clearable={this.state.clearable} name="selected-type" disabled={this.state.disabled} value={this.state.selectType} onChange={this.updateType} searchable={this.state.searchable} matchWidth={true} />
+                <Select className={Styles.Select + ' ' + Styles['Select-control'] + ' ' + Styles['Select-menu'] + ' ' + Styles['Select-menu-outer'] + ' ' + Styles['Select-placeholder'] + ' ' + Styles['Select-option'] + ' ' + Styles['Select-value'] + ' ' + Styles['Select-value-label'] + ' ' + Styles['is-open'] + ' ' + Styles['is-focused'] + ' ' + Styles['has-value']} options={gridOptions} clearable={this.state.clearable} name="selected-grid" disabled={this.state.disabled} value={this.state.selectGrid} onChange={this.updateGrid} searchable={this.state.searchable} matchWidth={true} />
+                <Select className={Styles.Select + ' ' + Styles['Select-menu'] + ' ' + Styles['Select-menu-outer'] + ' ' + Styles['Select-placeholder'] + ' ' + Styles['Select-control'] + ' ' + Styles['Select-option'] + ' ' + Styles['Select--single'] + ' ' + Styles['is-open'] + ' ' + Styles['is-focused'] + ' ' + Styles['has-value']} options={typeOptions} clearable={this.state.clearable} name="selected-type" disabled={this.state.disabled} value={this.state.selectType} onChange={this.updateType} searchable={this.state.searchable} matchWidth={true} />
                 <label className={Styles.label}><strong>Step 2:</strong> Enter latitude and longitude of the first point:</label>
                 <input value={this.state.xCoord} onChange={this.onXCoordChange}
                        className={Styles.textInputTextBox}
