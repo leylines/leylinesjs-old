@@ -184,8 +184,8 @@ $select-arrow-width:                5px !default;
 }
 
 .is-open > .Select-control {
-//    @include border-bottom-radius( 0 );
-//    background: $select-input-bg;
+    @include border-bottom-radius( 0 );
+    background: $select-input-bg;
 //    border-color: darken($select-input-border-color, 10%) $select-input-border-color lighten($select-input-border-color, 5%);
 }
 
@@ -205,9 +205,9 @@ $select-arrow-width:                5px !default;
     color: $select-input-placeholder;
 //    //line-height: $select-input-internal-height;
 //    //line-height: $select-input-height;
-//    padding-left: $select-padding-horizontal;
-//    padding-right: $select-padding-horizontal;
-//    //position: relative;
+    padding-left: $select-padding-horizontal;
+    padding-right: $select-padding-horizontal;
+    position: relative;
 //    left: 0;
 //    bottom: 0;
 //    right: 0;
@@ -241,8 +241,8 @@ $select-arrow-width:                5px !default;
 .Select-input {
 //    // inherits `display: inline-block` from "react-input-autosize"
 //    // height: $select-input-internal-height;
-//    padding-left: $select-padding-horizontal;
-//    padding-right: $select-padding-horizontal;
+    padding-left: $select-padding-horizontal;
+    padding-right: $select-padding-horizontal;
 //    vertical-align: middle;
 //
 //    > input {
