@@ -4,10 +4,17 @@ Change Log
 
 ### 4.6.0
 
+* Change in defaults:
+  * The `clipToRectangle` property of raster catalog items (`WebMapServiceCatalogItem`, `ArcGisMapServerCatalogItem`, etc.) now defaults to `true`.  It was `false` in previous releases.  Using `false` prevents features (especially point features) right at the edge of the layer's rectangle from being cut off when the server reports too tight a rectangle, but also causes the layer to load much more slowly in many cases.  Starting in this version, we favour performance and the much more common case that the rectangle can be trusted.
+* Made `WebMapServiceCatalogItem` tolerant of a `GetCapabilities` where a `LegendURL` element does not have an `OnlineResource` or a `Dimension` does not have any values.
 * Add support for 'Long' type hint to CSV data for specifying longitude.
 * The marker indicating the location of a search result is now placed correctly on the terrain surface.
 * Region for CatalogFunctions now selected on map rather than preview map
 * Some regions that were previously not selectable (in Analytics) except via autocomplete are now selectable.
+* Added hover text that show the position of data catalog search results in the full catalog.
+* Widened scrollbars and improve their contrast.
+* Removed the default maximum number of 10 results when searching the data catalog.
+* Allow users to browse for json configuration files when adding "Local Data".
 
 ### 4.5.1
 
