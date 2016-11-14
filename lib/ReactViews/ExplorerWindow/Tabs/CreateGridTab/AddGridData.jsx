@@ -1,11 +1,11 @@
 import React from 'react';
+import Select from 'react-select';
 import classNames from 'classnames';
 
 import addUserCatalogMember from '../../../../Models/addUserCatalogMember';
 import createCatalogItemFromFileOrUrl from '../../../../Models/createCatalogItemFromFileOrUrl';
 import createCatalogMemberFromType from '../../../../Models/createCatalogMemberFromType';
 import Dropdown from '../../../Generic/Dropdown';
-import getGridType from './getGridType.js';
 import ObserveModelMixin from '../../../ObserveModelMixin';
 import TerriaError from '../../../../Core/TerriaError';
 import addUserFiles from '../../../../Models/addUserFiles';
@@ -14,9 +14,8 @@ import checkGridInput from '../../../../Models/checkGridInput';
 import Styles from './add-grid-data.scss';
 
 // Local and remote data have different dataType options
-const gridType = getGridType().gridType;
+const GRID = require('./grids');
 const baseURL = window.location.protocol + "//" + window.location.host + "/api/createGrid/";
-var gridLevel = [{ value: 'points', name: 'Points' },{ value: '1', name: 'Main Lines' }, { value: '2', name: 'Minor Lines' }, { value: 'area', name: 'Areas' } ]
 
 
 /**
@@ -32,27 +31,44 @@ const AddGridData = React.createClass({
 
     getInitialState() {
         return {
-            gridType: gridType[0], // By default select the first item (auto)
-            gridLevel: gridLevel[0],
-            remoteUrl: baseURL + "0.0/0.0/0.0/" + gridType[0].value + "/" + gridLevel[0].value,
+            grid: 'grids',
+            type: 'beckerhagens',
+            disabled: false,
+            multi: false,
+            searchable: this.props.searchable,
+            selectGrid: 'beckerhagens',
+            selectType: 'point',
+            clearable: false,
+            searchable: false,
+            remoteUrl: baseURL + "0.0/0.0/0.0/" + "beckerhagens" + "/" + "point",
             xCoord: "0.0",
             yCoord: "0.0",
             angle: "0.0"
         };
     },
 
-    selectGridType(option) {
+    switchType (newGrid) {
+        //console.log('Type switched to ' + newGrid);
         this.setState({
-            gridType: option,
-            remoteUrl: baseURL + this.state.xCoord + "/" + this.state.yCoord + "/" + this.state.angle + "/" + option.value + "/" + this.state.gridLevel.value
-        });
+            type: newGrid,
+            selectType: 'point',
+            remoteUrl: baseURL + this.state.xCoord + "/" + this.state.yCoord + "/" + this.state.angle + "/" + newGrid + "/" + this.state.selectType
+        }); 
     },
-
-    selectGridLevel(option) {
+    updateGrid (newGrid) {
+        //console.log('Grid updated to ' + newGrid);
         this.setState({
-            gridLevel: option,
-            remoteUrl: baseURL + this.state.xCoord + "/" + this.state.yCoord + "/" + this.state.angle + "/" + this.state.gridType.value + "/" + option.value
-        });
+            selectGrid: newGrid,
+            remoteUrl: baseURL + this.state.xCoord + "/" + this.state.yCoord + "/" + this.state.angle + "/" + newGrid + "/" + this.state.selectType
+        }); 
+        this.switchType(newGrid);
+    },
+    updateType (newType) {
+        //console.log('Type updated to ' + newType);
+        this.setState({
+            selectType: newType,
+            remoteUrl: baseURL + this.state.xCoord + "/" + this.state.yCoord + "/" + this.state.angle + "/" + this.state.selectGrid + "/" + newType
+        }); 
     },
 
 
@@ -64,7 +80,7 @@ const AddGridData = React.createClass({
         if (checkGridInput(that.props, that.state)) {
             let promise;
             const newItem = createCatalogMemberFromType('czml', that.props.terria);
-            newItem.name = '[' + that.state.gridType.value + '][' + that.state.xCoord + '][' + that.state.yCoord + '][' + that.state.angle + '][' + that.state.gridLevel.value + ']';
+            newItem.name = '[' + that.state.grid + '][' + that.state.xCoord + '][' + that.state.yCoord + '][' + that.state.angle + '][' + that.state.type + ']';
             newItem.url = url;
             promise = newItem.load().then(function () {
                 return newItem;
@@ -80,37 +96,32 @@ const AddGridData = React.createClass({
     onXCoordChange(event) {
         this.setState({
             xCoord: event.target.value,
-            remoteUrl: baseURL + event.target.value + "/" + this.state.yCoord + "/" + this.state.angle + "/" + this.state.gridType.value + "/" + this.state.gridLevel.value
+            remoteUrl: baseURL + event.target.value + "/" + this.state.yCoord + "/" + this.state.angle + "/" + this.state.selectGrid + "/" + this.state.selectType
         });
     },
 
     onYCoordChange(event) {
         this.setState({
             yCoord: event.target.value,
-            remoteUrl: baseURL + this.state.xCoord + "/" + event.target.value + "/" + this.state.angle + "/" + this.state.gridType.value + "/" + this.state.gridLevel.value
+            remoteUrl: baseURL + this.state.xCoord + "/" + event.target.value + "/" + this.state.angle + "/" + this.state.selectGrid + "/" + this.state.selectType
         });
     },
 
     onAngleChange(event) {
         this.setState({
             angle: event.target.value,
-            remoteUrl: baseURL + this.state.xCoord + "/" + this.state.yCoord + "/" + event.target.value + "/" + this.state.gridType.value + "/" + this.state.gridLevel.value
+            remoteUrl: baseURL + this.state.xCoord + "/" + this.state.yCoord + "/" + event.target.value + "/" + this.state.selectGrid + "/" + this.state.selectType
         });
     },
 
     renderPanels() {
-        const dropdownTheme = {
-            dropdown: Styles.dropdown,
-            list: Styles.dropdownList,
-            isOpen: Styles.dropdownListIsOpen
-        };
+        var gridOptions = GRID['grids'];
+        var typeOptions = GRID[this.state.type];
         return (
             <div>
                 <label className={Styles.label}><strong>Step 1:</strong> Select type of grid to add: </label>
-                <Dropdown options={gridType} selected={this.state.gridType}
-                      selectOption={this.selectGridType} matchWidth={true} theme={dropdownTheme}/>
-                <Dropdown options={gridLevel} selected={this.state.gridLevel}
-                      selectOption={this.selectGridLevel} matchWidth={true} theme={dropdownTheme}/>
+                <div><Select className={Styles.Select + ' ' + Styles['Select-menu'] + ' ' + Styles['Select-menu-outer'] + ' ' + Styles['Select-placeholder'] + ' ' + Styles['Select-control'] + ' ' + Styles['Select-option'] + ' ' + Styles['Select-value'] + ' ' + Styles['Select-value-label'] + ' ' + Styles['Select-arrow-zone'] + ' ' + Styles['Select-arrow'] + ' ' + Styles['is-open'] + ' ' + Styles['is-focused'] + ' ' + Styles['has-value']} options={gridOptions} clearable={this.state.clearable} name="selected-grid" simpleValue disabled={this.state.disabled} value={this.state.selectGrid} onChange={this.updateGrid} searchable={this.state.searchable} matchWidth={true} /></div>
+                <div><Select className={Styles.Select + ' ' + Styles['Select-menu'] + ' ' + Styles['Select-menu-outer'] + ' ' + Styles['Select-placeholder'] + ' ' + Styles['Select-control'] + ' ' + Styles['Select-option'] + ' ' + Styles['Select-value'] + ' ' + Styles['Select-value-label'] + ' ' + Styles['Select-arrow-zone'] + ' ' + Styles['Select-arrow'] + ' ' + Styles['is-open'] + ' ' + Styles['is-focused'] + ' ' + Styles['has-value']} options={typeOptions} clearable={this.state.clearable} name="selected-type" simpleValue disabled={this.state.disabled} value={this.state.selectType} onChange={this.updateType} searchable={this.state.searchable} matchWidth={true} /></div>
                 <label className={Styles.label}><strong>Step 2:</strong> Enter latitude and longitude of the first point:</label>
                 <input value={this.state.xCoord} onChange={this.onXCoordChange}
                        className={Styles.textInputTextBox}
