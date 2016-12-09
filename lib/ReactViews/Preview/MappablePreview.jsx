@@ -119,6 +119,26 @@ const MappablePreview = React.createClass({
                                        className={Styles.link}>{catalogItem.metadataUrl}</a>
                                 </p>
                             </If>
+
+                            <If condition={catalogItem.dataUrlType && catalogItem.dataUrlType !== 'none' && catalogItem.dataUrl}>
+                                <h4 className={Styles.h4}>Data URL</h4>
+                                <p>
+                                    <Choose>
+                                        <When condition={catalogItem.dataUrlType.indexOf('wfs') === 0 || catalogItem.dataUrlType.indexOf('wcs') === 0}>
+                                            Use the link below to download the data. See the{' '}
+                                            {catalogItem.dataUrlType.indexOf('wfs') === 0 && <a href="http://docs.geoserver.org/latest/en/user/services/wfs/reference.html" target="_blank" key="wfs">Web Feature Service (WFS) documentation</a>}
+                                            {catalogItem.dataUrlType.indexOf('wcs') === 0 && <a href="http://docs.geoserver.org/latest/en/user/services/wcs/reference.html" target="_blank" key="wms">Web Coverage Service (WCS) documentation</a>}
+                                            {' '} for more information on customising URL query parameters.
+                                        </When>
+                                        <Otherwise>
+                                            Use the link below to download data directly.
+                                        </Otherwise>
+                                    </Choose>
+                                    <br/>
+                                    <a href={catalogItem.dataUrl} key={catalogItem.dataUrl} className={Styles.link}
+                                       target="_blank">{catalogItem.dataUrl}</a>
+                                </p>
+                            </If>
                         </If>
                     </div>
                 </div>
