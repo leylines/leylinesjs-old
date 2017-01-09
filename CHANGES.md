@@ -2,6 +2,22 @@
 Change Log
 ==========
 
+### 4.8.0
+
+* Fixed a bug which prevented downloading data from the chart panel if the map was started in 2D mode.
+* Changed the default opacity of table data to 0.8 from 0.6.
+* Added the ability to read dates in the format "2017-Q2".
+* Improved support for SDMX-JSON, including showing values as a percent of regional totals, showing the selected conditions in a more concise format, and fixing some bugs.
+* Updated `TableCatalogItem`s to show a download URL in About This Dataset, which downloads the entire dataset as csv, even if the original data was more complex (eg. from an API).
+* The icon specified to the `MenuPanel` / `DropdownPanel` theme can now be either the identifier of an icon from `Icon.GLYPHS` or an actual SVG `require`'d via the `svg-sprite-loader`.
+* Fixed a bug that caused time-varying points from a CSV file to leave a trail on the 2D map.
+
+### 4.7.4
+
+* Renamed `SpatialDetailingFunction`, `WhyAmISpecialFunction`, and `PlacesLikeMeFunction` to `SpatialDetailingCatalogFunction`, `WhyAmISpecialCatalogFunction`, and `PlacesLikeMeCatalogFunction`, respectively.  The old names will be removed in a future release.
+* Fixed incorrect tooltip text for the Share button.
+* Improved the build process and content of the user guide documentation.
+
 ### 4.7.3
 
 * Canceled pending tile requests when removing a layer from the 2D map.  This should drastically improve the responsiveness when dragging the time slider of a time-dynamic layer in 2D mode.
@@ -155,7 +171,7 @@ Change Log
 ### 4.2.0
 
 * There is a known bug in this version which prevents the user from being able to choose a region for some Analytics functions.
-* Added support for ArcGis FeatureServers, using the new catalog types `esri-featureServer` and `esri-featureServer-group`. Catalog type `esri-group` can load REST service, MapServer and FeatureServer endpoints. (For backwards compatability, catalog type `esri-mapServer-group` continues to work for REST service as well as MapServer endpoints.)
+* Added support for ArcGis FeatureServers, using the new catalog types `esri-featureServer` and `esri-featureServer-group`. Catalog type `esri-group` can load REST service, MapServer and FeatureServer endpoints. (For backwards compatibility, catalog type `esri-mapServer-group` continues to work for REST service as well as MapServer endpoints.)
 * Enumeration parameter now defaults to what is shown in UI, and if parameter is optional, '' is default.
 * Adds bulk geocoding capability for Australian addresses. So GnafAPI can be used with batches of addresses, if configured.
 * Fixed a bug that caused the selection indicator to get small when near the right edge of the map and to overlap the side panel when past the left edge.
