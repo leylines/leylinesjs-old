@@ -3,10 +3,22 @@
 Change Log
 ==========
 
+### 4.10.2
+
+* New sections are now merged info `CatalogMember.info` when `updateFromJson` is called multiple times, rather than the later `info` completely replacing the earlier one.  This is most useful when using `itemProperties` to override some of the info sections in a child catalog item.
+* Fixed a bug where csv files with a date column would sometimes fail if a date is missing.
+
+### 4.10.1
+
+* Improved the SDMX-JSON catalog item to handle huge dimensions, allow a blacklist, handle bad responses better, and more.
+* Fixed a bug that prevented the proxy from being used for loading legends, even in situations where it is necessary such as an `http` legend accessed from an `https` site.
+* Added link to re-download local files, noting that TerriaJS may have done additional processing (eg. geocoding).
+
 ### 4.10.0
 
 * Changed defaults:
   * `WebProcessingServiceCatalogFunction` now defaults to invoking the `Execute` service via an HTTP POST with XML encoding rather than an HTTP GET with KVP encoding.  This is a more sensible default because the WPS specification requires that servers support POST/XML while GET/KVP is optional.  Plus, POST/XML allows large input parameters, such as a polygon descibing all of Australia, to be successfully passed to the WPS process.  To force use of GET/KVP, set the `executeWithHttpGet` property to `true`.
+* Fixed problems with third-party dependencies causing `npm install` and `npm run gulp` to fail.
 
 ### 4.9.0
 
