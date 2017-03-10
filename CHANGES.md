@@ -3,6 +3,19 @@
 Change Log
 ==========
 
+### 4.10.4
+
+* Added the ability for `CkanCatalogGroup` to receive results in pages, rather than all in one request.  This will happen automatically when the server returns partial results.
+* Improved the performance of the catalog UI by not creating React elements for the contents of a group until that group is opened.
+* Close polygons used as input to a `CatalogFunction` by making the last position the same as the first one.
+* Added support for a new `nameInCatalog` property on all catalog members which overrides `name` when displayed in the catalog, if present.
+* Added `terria.urlEncodeComponent` function for use in feature info templates.
+* `yAxisMin` and `yAxisMax` are now honored when multiple charts are active, by using the minimum `yAxisMin` and the maximum `yAxisMax` of all charts.
+
+### 4.10.3
+
+* Locked third-party dependency proj4 to v2.3.x because v2.4.0 breaks our build.
+
 ### 4.10.2
 
 * New sections are now merged info `CatalogMember.info` when `updateFromJson` is called multiple times, rather than the later `info` completely replacing the earlier one.  This is most useful when using `itemProperties` to override some of the info sections in a child catalog item.
