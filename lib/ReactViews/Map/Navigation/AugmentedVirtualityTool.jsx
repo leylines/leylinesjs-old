@@ -62,7 +62,7 @@ const AugmentedVirtualityTool = createReactClass({
                 message: 'Align your mobile device so that it corresponds with the maps current alignment, then click the blinking compass.'
                          + ' If no landmarks to align with are currently visible on the map, you can move the map using'
                          + ' drag and pinch actions until a recognisable landmark is visible before aligning the device with the map.'
-                         + '<br /><div><img width="100%" src="./build/TerriaJS/images/ar-realign-guide.gif" /></div>'
+                         + '<br /><div><img width="100%" src="./build/LeylinesJS/images/ar-realign-guide.gif" /></div>'
                          + '<br />Tip: The sun or moon are often good landmarks to align with if you are in a location you aren\x27t familiar with (be careful not to look at the sun - it can hurt your eyes).',
                 confirmText: 'Got it'
             });
