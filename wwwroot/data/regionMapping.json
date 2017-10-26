@@ -1,6 +1,13 @@
 {
   "comments": "Matching takes place in the order defined in this file. Place code matches before name matches, and smaller regions before larger ones.",
   "regionWmsMap": {
+    "RM_World": {
+      "layerName": "regionMapping:countries",
+      "server": "https://maps.leylines.ch:8443/geoserver/regionMapping/ows",
+      "regionProp": "sov_a3",
+      "aliases": ["sovereignt"],
+      "description": "World Countries"
+    },
     "SA1": {
       "layerName": "region_map:FID_SA1_2011_AUST",
       "server": "http://geoserver.nationalmap.nicta.com.au/region_map/ows",
