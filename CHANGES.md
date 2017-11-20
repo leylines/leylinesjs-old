@@ -3,6 +3,20 @@
 Change Log
 ==========
 
+### 5.5.3
+
+* Fixed a bug in SDMX-JSON when using `cannotSum`.
+
+### 5.5.2
+
+* Deprecated SDMX-JSON catalog items' `cannotDisplayPercentMap` in favour of `cannotSum`.
+* Updated `cannotSum` so that it does not display a total in some cases, as well as suppressing the regional-percentage checkbox.  `cannotSum` can be either a mapping of concept ids to the values that prevent summing, or simply `true` to always prevent summing.
+* Fixed a bug that caused an error when Splitting a layer that does not have a `clock`.
+
+### 5.5.1
+
+* Added `cannotDisplayPercentMap` to SDMX-JSON catalog items, to optionally turn off the "display as a percentage of regional total" checkbox when the data is not a count (eg. a rate or an average).
+
 ### 5.5.0
 
 * Added the ability to split the screen into a left-side and right-side, and show raster and region mapped layers on only one side of the splitter.
