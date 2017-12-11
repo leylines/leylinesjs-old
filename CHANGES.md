@@ -3,6 +3,11 @@
 Change Log
 ==========
 
+### 5.5.4
+
+* Fixed a serious bug that prevented opening the Data Catalog in Internet Explorer.
+* Fixed some problems with the Terria Spatial Analytics `CatalogFunctions`.
+
 ### 5.5.3
 
 * Fixed a bug in SDMX-JSON when using `cannotSum`.
