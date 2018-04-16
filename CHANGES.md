@@ -3,10 +3,23 @@
 Change Log
 ==========
 
-### Next Release
+### 5.7.0
 
+* Added `MagdaCatalogItem` to load details of a catalog item from [Magda](https://github.com/TerriaJS/magda).
+* Fixed a bug that could cause a time-dynamic WMS layer to fail to ever show up on the map if the initial time on the timeline was outside the intervals where the layer had data.
+* Fixed a bug which could cause a crash during load from share link when the layer default is to not `useOwnClock` but the share link has `useOwnClock` set.
+* Fixed an issue that caused a 'This data source is already shown' error in particular circumstances.
+
+### 5.6.4
+
+* Fixed a bug causing an error message when adding tabular data to the workbench before it was loaded.
+
+### 5.6.3
+
+* Display of Lat Lon changed from 3 deciml places to 5 decimal places - just over 1m precision at equator.
 * Fixed a bug that caused the timeline to appear when changing the time on the workbench for a layer not attached to the timeline.
 * The workbench date/time picker is now available for time varying point and region CSVs.
+* Fixed a bug that caused the workbench date picker controls to disappear when the item was attached to the timeline and the timeline's current time was outside the valid range for the item.
 
 ### 5.6.2
 
