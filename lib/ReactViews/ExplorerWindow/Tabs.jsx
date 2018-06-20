@@ -36,6 +36,15 @@ const Tabs = createReactClass({
             />
         };
 
+        const gridTab = {
+            name: 'Create Grid (beta)',
+            title: 'create-grid',
+            category: 'create-grid',
+            panel: <CreateGridTab terria={this.props.terria}
+                                viewState={this.props.viewState}
+            />
+        }r;,
+
         if (this.props.terria.configParameters.tabbedCatalog) {
             return [].concat(this.props.terria.catalog.group.items.filter(member => member !== this.props.terria.catalog.userAddedDataGroup).map((member, i) => ({
                 name: member.nameInCatalog,
@@ -47,7 +56,7 @@ const Tabs = createReactClass({
                                        items={member.items || [member]}
                                        searchPlaceholder="Search whole catalogue"
                 />
-            })), [myDataTab]);
+            })), [myDataTab], [gridTab]);
         } else {
             return [
                 {
@@ -61,13 +70,7 @@ const Tabs = createReactClass({
                     />
                 },
                 myDataTab,
-                {
-                    name: 'Create Grid (beta)',
-                    title: 'create-grid',
-                    panel: <CreateGridTab terria={this.props.terria}
-                                           viewState={this.props.viewState}
-                    />
-                },
+                gridTab
             ];
         }
     },
