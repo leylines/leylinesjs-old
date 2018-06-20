@@ -1,4 +1,6 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import addUserCatalogMember from '../../../../Models/addUserCatalogMember';
@@ -22,7 +24,7 @@ var gridLevel = [{ value: 'points', name: 'Points' },{ value: '1', name: 'Main L
 /**
  * Add data panel in modal window -> Create Grid tab
  */
-const AddGridData = React.createClass({
+const AddGridData = createReactClass({
     mixins: [ObserveModelMixin],
 
     propTypes: {
