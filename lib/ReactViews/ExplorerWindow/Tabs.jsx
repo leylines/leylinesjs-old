@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import DataCatalogTab from './Tabs/DataCatalogTab.jsx';
 import MyDataTab from './Tabs/MyDataTab/MyDataTab.jsx';
-import CreateGridTab from './Tabs/CreateGridTab/CreateGridTab.jsx';
+//import CreateGridTab from './Tabs/CreateGridTab/CreateGridTab.jsx';
 import ObserveModelMixin from '../ObserveModelMixin';
 import defined from 'terriajs-cesium/Source/Core/defined';
 
@@ -36,14 +36,14 @@ const Tabs = createReactClass({
             />
         };
 
-        const gridTab = {
-            name: 'Create Grid (beta)',
-            title: 'create-grid',
-            category: 'create-grid',
-            panel: <CreateGridTab terria={this.props.terria}
-                                viewState={this.props.viewState}
-            />
-        }r;,
+//        const gridTab = {
+//            name: 'Create Grid (beta)',
+//            title: 'create-grid',
+//            category: 'create-grid',
+//            panel: <CreateGridTab terria={this.props.terria}
+//                                viewState={this.props.viewState}
+//            />
+//        };
 
         if (this.props.terria.configParameters.tabbedCatalog) {
             return [].concat(this.props.terria.catalog.group.items.filter(member => member !== this.props.terria.catalog.userAddedDataGroup).map((member, i) => ({
@@ -56,7 +56,8 @@ const Tabs = createReactClass({
                                        items={member.items || [member]}
                                        searchPlaceholder="Search whole catalogue"
                 />
-            })), [myDataTab], [gridTab]);
+//            })), [myDataTab], [gridTab]);
+            })), [myDataTab]);
         } else {
             return [
                 {
@@ -70,7 +71,7 @@ const Tabs = createReactClass({
                     />
                 },
                 myDataTab,
-                gridTab
+//                gridTab
             ];
         }
     },
