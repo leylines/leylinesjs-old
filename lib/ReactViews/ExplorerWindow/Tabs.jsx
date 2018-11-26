@@ -5,7 +5,7 @@ import classNames from 'classnames';
 
 import DataCatalogTab from './Tabs/DataCatalogTab.jsx';
 import MyDataTab from './Tabs/MyDataTab/MyDataTab.jsx';
-import CreateGridTab from './Tabs/CreateGridTab/CreateGridTab.jsx';
+//import CreateGridTab from './Tabs/CreateGridTab/CreateGridTab.jsx';
 import ObserveModelMixin from '../ObserveModelMixin';
 import defined from 'terriajs-cesium/Source/Core/defined';
 
