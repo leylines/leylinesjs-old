@@ -114,7 +114,6 @@
     "terriajs-jasmine-ajax": "^3.2.1",
     "leylines-server": "git://github.com/leylines/leylines-server.git#master",
     "webpack-dev-server": "^3.1.14"
->>>>>>> upstream/master
   },
   "scripts": {
     "prepublish": "gulp post-npm-install",
