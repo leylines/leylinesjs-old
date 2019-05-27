@@ -230,5 +230,5 @@ function addProperties(file, result) {
 gulp.task('build', gulp.series('copy-cesium-assets', 'build-specs'));
 gulp.task('release', gulp.series('copy-cesium-assets', 'release-specs'));
 gulp.task('watch', gulp.series('copy-cesium-assets', 'watch-specs'));
-gulp.task('post-npm-install', gulp.series('copy-cesium-assets', 'docs'));
+gulp.task('post-npm-install', gulp.series('copy-cesium-assets'));
 gulp.task('default', gulp.series('lint', 'build'));
