@@ -1,125 +1,140 @@
-import React from 'react';
-import createReactClass from 'create-react-class';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import ko from 'terriajs-cesium/Source/ThirdParty/knockout';
+import React from "react";
+import createReactClass from "create-react-class";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import ko from "terriajs-cesium/Source/ThirdParty/knockout";
 
-import ObserveModelMixin from '../ObserveModelMixin';
-import Tabs from './Tabs.jsx';
+import ObserveModelMixin from "../ObserveModelMixin";
+import Tabs from "./Tabs.jsx";
 
-import Styles from './explorer-window.scss';
+import Styles from "./explorer-window.scss";
 
 const SLIDE_DURATION = 300;
 
 const ExplorerWindow = createReactClass({
-    displayName: 'ExplorerWindow',
-    mixins: [ObserveModelMixin],
+  displayName: "ExplorerWindow",
+  mixins: [ObserveModelMixin],
 
-    propTypes: {
-        terria: PropTypes.object.isRequired,
-        viewState: PropTypes.object.isRequired
-    },
+  propTypes: {
+    terria: PropTypes.object.isRequired,
+    viewState: PropTypes.object.isRequired
+  },
+  close() {
+    this.props.viewState.explorerPanelIsVisible = false;
+    this.props.viewState.switchMobileView("nowViewing");
+  },
 
-    getInitialState() {
-        return {
-            isMounted: false
-        };
-    },
+  /* eslint-disable-next-line camelcase */
+  UNSAFE_componentWillMount() {
+    this.props.viewState.explorerPanelAnimating = true;
 
-    close() {
-        this.props.viewState.explorerPanelIsVisible = false;
-        this.props.viewState.switchMobileView('nowViewing');
-    },
+    this._pickedFeaturesSubscription = ko
+      .pureComputed(this.isVisible, this)
+      .subscribe(this.onVisibilityChange);
+    this.onVisibilityChange(this.isVisible());
+  },
 
-    /* eslint-disable-next-line camelcase */
-    UNSAFE_componentWillMount() {
-        this.props.viewState.explorerPanelAnimating = true;
+  componentDidMount() {
+    this.escKeyListener = e => {
+      if (e.keyCode === 27) {
+        this.close();
+      }
+    };
+    window.addEventListener("keydown", this.escKeyListener, true);
+  },
 
-        this._pickedFeaturesSubscription = ko.pureComputed(this.isVisible, this).subscribe(this.onVisibilityChange);
-        this.onVisibilityChange(this.isVisible());
-    },
+  onVisibilityChange(isVisible) {
+    if (isVisible) {
+      this.slideIn();
+    } else {
+      this.slideOut();
+    }
+  },
 
-    componentDidMount() {
-        this.escKeyListener = e => {
-            if (e.keyCode === 27) {
-                this.close();
-            }
-        };
-        window.addEventListener('keydown', this.escKeyListener, true);
-    },
+  slideIn() {
+    this.props.viewState.explorerPanelAnimating = true;
 
-    onVisibilityChange(isVisible) {
-        if (isVisible) {
-            this.slideIn();
-        } else {
-            this.slideOut();
-        }
-    },
+    this.setState({
+      visible: true
+    });
+    setTimeout(() => {
+      this.setState({
+        slidIn: true
+      });
 
-    slideIn() {
-        this.props.viewState.explorerPanelAnimating = true;
+      setTimeout(
+        () => (this.props.viewState.explorerPanelAnimating = false),
+        SLIDE_DURATION
+      );
+    });
+  },
 
-        this.setState({
-            visible: true
-        });
-        setTimeout(() => {
-            this.setState({
-                slidIn: true
-            });
+  slideOut() {
+    this.setState({
+      slidIn: false
+    });
+    setTimeout(() => {
+      this.setState({
+        visible: false
+      });
+    }, SLIDE_DURATION);
+  },
 
-            setTimeout(() => this.props.viewState.explorerPanelAnimating = false, SLIDE_DURATION);
-        });
-    },
+  componentWillUnmount() {
+    window.removeEventListener("keydown", this.escKeyListener, false);
 
-    slideOut() {
-        this.setState({
-            slidIn: false
-        });
-        setTimeout(() => {
-            this.setState({
-                visible: false
-            });
-        }, SLIDE_DURATION);
-    },
+    this._pickedFeaturesSubscription.dispose();
+  },
 
-    componentWillUnmount() {
-        window.removeEventListener('keydown', this.escKeyListener, false);
+  isVisible() {
+    return (
+      !this.props.viewState.useSmallScreenInterface &&
+      !this.props.viewState.hideMapUi() &&
+      this.props.viewState.explorerPanelIsVisible
+    );
+  },
 
-        this._pickedFeaturesSubscription.dispose();
-    },
+  render() {
+    const visible = this.state.visible;
 
-    isVisible() {
-        return !this.props.viewState.useSmallScreenInterface && !this.props.viewState.hideMapUi() && this.props.viewState.explorerPanelIsVisible;
-    },
-
-    render() {
-        const visible = this.state.visible;
-
-        return visible ? (
-            <div className={classNames(Styles.modalWrapper, this.props.viewState.topElement === 'AddData' ? 'top-element': '')}            
-                 id="explorer-panel-wrapper"
-                 aria-hidden={!visible}>
-                <div onClick={this.close}
-                     id="modal-overlay"
-                     className={Styles.modalOverlay}
-                     tabIndex="-1"/>
-                <div id="explorer-panel"
-                     className={classNames(Styles.explorerPanel, Styles.modalContent, {[Styles.isMounted]: this.state.slidIn})}
-                     aria-labelledby="modalTitle"
-                     aria-describedby="modalDescription"
-                     role="dialog">
-                    <button type='button'
-                            onClick={this.close}
-                            className={Styles.btnCloseModal}
-                            title="Close data panel"
-                            data-target="close-modal">
-                        Done
-                    </button>
-                    <Tabs terria={this.props.terria} viewState={this.props.viewState}/>
-                </div>
-            </div>
-        ) : null;
-    },
+    return visible ? (
+      <div
+        className={classNames(
+          Styles.modalWrapper,
+          this.props.viewState.topElement === "AddData" ? "top-element" : ""
+        )}
+        id="explorer-panel-wrapper"
+        aria-hidden={!visible}
+      >
+        <div
+          onClick={this.close}
+          id="modal-overlay"
+          className={Styles.modalOverlay}
+          tabIndex="-1"
+        />
+        <div
+          id="explorer-panel"
+          className={classNames(Styles.explorerPanel, Styles.modalContent, {
+            [Styles.isMounted]: this.state.slidIn
+          })}
+          aria-labelledby="modalTitle"
+          aria-describedby="modalDescription"
+          role="dialog"
+        >
+          <button
+            type="button"
+            onClick={this.close}
+            className={Styles.btnCloseModal}
+            title="Close data panel"
+            data-target="close-modal"
+          >
+            Done
+          </button>
+          <Tabs terria={this.props.terria} viewState={this.props.viewState} />
+        </div>
+      </div>
+    ) : null;
+  }
 });
 
 module.exports = ExplorerWindow;
