@@ -1,6 +1,18 @@
 Change Log
 ==========
 
+### v7.6.9
+
+* Automatically set `linkedWcsCoverage` on a WebMapServiceCatalogItem.
+
+### v7.6.8
+
+* Added ability in TerriaJsonCatalogFunction to handle long requests via HTTP:202 Accepted.
+
+### v7.6.7
+
+* Fixed share disclaimer to warn only when user has added items that cannot be shared.
+
 ### v7.6.6
 
 * Basemaps are now loaded before being enabled & showed
