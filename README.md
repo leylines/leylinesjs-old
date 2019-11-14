@@ -4,7 +4,7 @@ LeylinesJS
 
 [![Join the chat at https://gitter.im/TerriaJS/terriajs](https://badges.gitter.im/TerriaJS/terriajs.svg)](https://gitter.im/TerriaJS/terriajs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Docs](https://img.shields.io/badge/docs-online-blue.svg)](https://docs.terria.io/)
 
-![Terria logo](terria-logo.png "Terria logo")
+![Leylines logo](leylines-logo.png "Leylines logo")
 
 TerriaJS is a library for building rich, web-based geospatial data explorers, used to drive [National Map](http://nationalmap.gov.au), [AREMI](http://nationalmap.gov.au/renewables) and [NEII Viewer](http://neii.gov.au/viewer/).  It uses [Cesium](https://cesiumjs.org) and WebGL for a full 3D globe in the browser with no plugins.  It gracefully falls back to 2D with [Leaflet](http://leafletjs.com/) on systems that can't run Cesium. It can handle catalogs of thousands of layers, with dozens of geospatial file and web service types supported. It is almost entirely JavaScript in the browser, meaning it can even be deployed as a static website, making it simple and cheap to host.
 
