@@ -1,5 +1,16 @@
 Change Log
 ==========
+### next release
+
+* Added `GeoRssCatalogItem` for displaying GeoRSS files comming from rss2 and atom feeds.
+
+### v7.11.4
+
+* Add support for `classBreaks` renderer to `ArcGisFeatureServerCatalogItem`.
+* Upgraded to Cesium v1.68.
+* Replace `defineProperties` and `freezeObject` to `Object.defineProperties` and `Object.freeze` respectively.
+* Bumped travis build environment to node 10.
+* Upgraded to `generate-terriajs-schema` to v1.5.0.
 
 ### v7.11.3
 
