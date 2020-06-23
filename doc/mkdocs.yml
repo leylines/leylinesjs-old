@@ -3,13 +3,13 @@ site_name: Leylines-Docu
 #theme: readthedocs
 theme:
     name: 'material'
-    logo: 'terria.png'
+    logo: 'leylines-logo.png'
 docs_dir: 'doc'
-site_dir: '../wwwroot/doc/guide'
+site_dir: '../../leylines-docs/guide'
 markdown_extensions:
   - markdown.extensions.admonition
 strict: true
-pages:
+nav:
 - Home: 'README.md'
 - Getting Started: 'getting-started.md'
 - Customizing:
