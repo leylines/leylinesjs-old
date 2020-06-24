@@ -5,7 +5,7 @@ theme:
     name: 'material'
     logo: 'leylines-logo.png'
 docs_dir: 'doc'
-site_dir: '../../leylines-docs/guide'
+site_dir: '../docroot/guide'
 markdown_extensions:
   - markdown.extensions.admonition
 strict: true
