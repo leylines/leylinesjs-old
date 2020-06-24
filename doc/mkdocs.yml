@@ -3,7 +3,7 @@ site_name: Leylines-Docu
 #theme: readthedocs
 theme:
     name: 'material'
-    logo: 'leylines-logo.png'
+    logo: 'leylines-sign.png'
 docs_dir: 'doc'
 site_dir: '../docroot/guide'
 markdown_extensions:
