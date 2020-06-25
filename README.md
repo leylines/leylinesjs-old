@@ -1,15 +1,57 @@
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![Apache-2.0 License][license-shield]][license-url]
 
-LeylinesJS
-============
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/S6S51HNJ6)
 
-[![Join the chat at https://gitter.im/TerriaJS/terriajs](https://badges.gitter.im/TerriaJS/terriajs.svg)](https://gitter.im/TerriaJS/terriajs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Docs](https://img.shields.io/badge/docs-online-blue.svg)](https://docs.terria.io/)
+<!-- Leylines LOGO -->
+<br />
+<p align="center">
+  <a href="https://www.leylines.net">
+    <img src="https://www.leylines.net/img/leylines-sign.png" alt="Logo" width="80" height="80">
+  </a>
 
-![Leylines logo](leylines-logo.png "Leylines logo")
+  <h3 align="center">LeylinesJS</h3>
 
-TerriaJS is a library for building rich, web-based geospatial data explorers, used to drive [National Map](http://nationalmap.gov.au), [AREMI](http://nationalmap.gov.au/renewables) and [NEII Viewer](http://neii.gov.au/viewer/).  It uses [Cesium](https://cesiumjs.org) and WebGL for a full 3D globe in the browser with no plugins.  It gracefully falls back to 2D with [Leaflet](http://leafletjs.com/) on systems that can't run Cesium. It can handle catalogs of thousands of layers, with dozens of geospatial file and web service types supported. It is almost entirely JavaScript in the browser, meaning it can even be deployed as a static website, making it simple and cheap to host.
+  <p align="center">
+    leylines.net documents, researches and archives ley lines and places of high energy and tries to find a global network interconnectng local ley lines to a big energynet.
+    <br />
+    <a href="https://docs.leylines.net"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://www.leylines.net">Homepage</a>
+    ·
+    <a href="https://maps.leylines.net">The Map</a>
+    ·
+    <a href="https://hub.leylines.net">The Hub</a>
+  </p>
+</p>
+
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+
+* [About](#about)
+  * [Features](#features)
+  * [Technical](#technical)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
+
+<!-- ABOUT THE PROJECT -->
+## About
+
+LeylineJS is a library for building rich, web-based geospatial data explorers, used to drive [leylines.net](https://maps.leylines.net).  It uses [Cesium](https://cesiumjs.org) and WebGL for a full 3D globe in the browser with no plugins.  It gracefully falls back to 2D with [Leaflet](http://leafletjs.com/) on systems that can't run Cesium. It can handle catalogs of thousands of layers, with dozens of geospatial file and web service types supported. It is almost entirely JavaScript in the browser, meaning it can even be deployed as a static website, making it simple and cheap to host.
 
 ### Features
-
 * Nested catalog of layers which can be independently enabled to create mashups of many layers.
 * Supports GeoJSON, KML, CSV (point and region-mapped), GPX and CZML file types natively, and others including zipped shapefiles with an optional server-side conversion service.
 * Supports WMS, WFS, Esri MapServer, ABS ITT, Bing Maps, OpenStreetMap-style raster tiles, Mapbox, Urthecast, and WMTS item types.
@@ -21,37 +63,6 @@ TerriaJS is a library for building rich, web-based geospatial data explorers, us
 * All ASGS (Australian Statistical Geographic Standard) region types (LGA, SA2, commonwealth electoral district etc) supported for [CSV region mapping](https://github.com/TerriaJS/nationalmap/wiki/csv-geo-au), plus several others: Primary Health Networks, Statistical Local Areas, ISO 3 letter country codes, etc.
 * Users can generate a reusable URL link of their current map view, to quickly share mashups of web-hosted data.
 
-![Terria screenshot](terria-screenshot.png "Terria screenshot")
-
-### Who's using TerriaJS?
-
-#### Sites developed by Data61
-
-* [National Map](http://nationalmap.gov.au)
-* [AREMI](http://nationalmap.gov.au/renewables)
-* [Northern Australia Investment Map](http://nationalmap.gov.au/northernaustralia)
-* [NEII Viewer](http://neii.org.au/viewer)
-* [Global Risk Map](http://globalriskmap.nicta.com.au)
-* [Ground Water Visualisation System](https://groundwater.data61.csiro.au)
-* [State of the Environment 2016](https://soe.terria.io/)
-* [ParlMap](http://parlmap.terria.io/) (authorisation required)
-* [GeoGLAM Rangeland and Pasture Productivity](http://map.geo-rapp.org/)
-* [City of Sydney data explorer](http://data.cityofsydney.nsw.gov.au/map)
-
-#### Not Data61
-
-Sites we're aware of that are using TerriaJS. These are not endorsements or testimonials.
-
-* [AURIN Map](http://map.aurin.org.au/)
-* [Leylines](http://maps.leylines.ch/)
-* [PropellerAero](http://www.propelleraero.com/)
-* [USGS Protected Areas database](https://maps.usgs.gov/beta/padus/) (beta)
-* [Map-N-Tour](http://mapntour.squarespace.com/news/?tag=3D+Map+Platforms)
-* [Innovisite France Beta](http://www.innovisite.com/map/france/)
-* [USGS The National Map Advanced Viewer](https://viewer.nationalmap.gov/advanced/terriajs-usgs/)
-* [Portale del suolo](http://www.sardegnaportalesuolo.it/webgis/)
-* [Find & Connect Map of Children's Homes](https://map.findandconnect.gov.au/)
-
 ### Technical
 
 * Built in ECMAScript 2015, compiled with Babel to ES5.
@@ -59,13 +70,79 @@ Sites we're aware of that are using TerriaJS. These are not endorsements or test
 * [TerriaJS Server component](https://github.com/TerriajS/TerriaJS-Server) runs in NodeJS and provides proxying for web services that don't support CORS or require authentication.
 * Dependencies are [managed in NPM](https://www.npmjs.com/~terria) and assembled using WebPack.
 
-### Getting Started ###
+### Built With
+
+* [TerriaJS](https://www.terria.io/)
+* [Cesium](https://cesiumjs.org/)
+* [Leaflet](https://leafletjs.com/)
+
+<!-- GETTING STARTED -->
+## Getting Started
 
 The easiest way to build your own Terria-based map is using the TerriaMap starting point. This gives you the HTML structure, server and build processes you need to get a site up and running immediately.
 
-See [Getting Started](http://terria.io/Documentation/guide/getting-started/) in the [Documentation](http://terria.io/Documentation/guide/) for all the details.
+See [Getting Started](https://docs.leylines.net/guide/getting-started/) in the [Documentation](https://docs.leylines.net/guide/) for all the details.
 
-### Components and naming
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* NPM
+```sh
+npm install npm@latest -g
+```
+
+### Installation
+
+1. Clone the repo
+```sh
+git clone https://github.com/leylines/leylinesjs.git
+```
+2. Install NPM packages
+```sh
+npm install
+```
+3. Build Docs
+```sh
+npm run gulp
+```
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+_For more examples, please refer to the [Documentation](https://docs.leylines.net/getting-started)_
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+See the [open issues](https://github.com/leylines/leylinesjs/issues) for a list of proposed features (and known issues).
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<!-- LICENSE -->
+## License
+
+Distributed under the Apache-2.0 License. See `LICENSE` for more information.
+
+<!-- CONTACT -->
+## Contact
+
+Joerg Roth - [@earthanddata](https://twitter.com/earthanddata) - info@leylines.net
+
+Project Link: [https://github.com/leylines/leylinesjs](https://github.com/leylines/leylinesjs)
+
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements
 
 * **[Terria™](http://terria.io)** is the overall name for the spatial data platform and the team that built TerriaJS.
 * **TerriaJS** is this JavaScript library consisting of the 2D/3D map, catalog management and many spatial data connectors.
@@ -73,21 +150,19 @@ See [Getting Started](http://terria.io/Documentation/guide/getting-started/) in 
 * **[TerriaMap](https://github.com/TerriaJS/TerriaMap)** is a complete website starting point, using TerriaJS.
 * **[TerriaJS-Server](https://github.com/TerriaJS/TerriaJS-Server)** is a NodeJS-based server that provides proxying and support services for TerriaJS.
 * **[NationalMap](https://github.com/NICTA/NationalMap)** is the flagship Terria deployment, and the origin of the TerriaJS library.
+* [Choose an Open Source License](https://choosealicense.com)
+* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
-#### Related components
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/leylines/leylinesjs.svg?style=flat-square
+[contributors-url]: https://github.com/leylines/leylinesjs/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/leylines/leylinesjs.svg?style=flat-square
+[forks-url]: https://github.com/leylines/leylinesjs/network/members
+[stars-shield]: https://img.shields.io/github/stars/leylines/leylinesjs.svg?style=flat-square
+[stars-url]: https://github.com/leylines/leylinesjs/stargazers
+[issues-shield]: https://img.shields.io/github/issues/leylines/leylinesjs.svg?style=flat-square
+[issues-url]: https://github.com/leylines/leylinesjs/issues
+[license-shield]: https://img.shields.io/github/license/leylines/leylinesjs.svg?style=flat-square
+[license-url]: https://github.com/leylines/leylinesjs/blob/master/LICENSE.md
 
-* **[Catalog Editor](https://github.com/TerriaJS/catalog-editor)**, an automatically generated web interface for creating and editing catalog (init) files.
-* **[Generate-TerriaJS-Schema](https://github.com/TerriaJS/generate-terriajs-schema)**, a tool which automatically generates a schema for validating catalog files, and also the editor, by processing TerriaJS source code.
-* **[TerriaMapStatic](https://github.com/terriajs/terriamapstatic)**, a pre-built version of TerriaMap, which can be deployed as a static HTML website, such as on Github Pages.
-
-### Big Thanks
-
-Cross-browser Testing Platform and Open Source <3 Provided by [Sauce Labs](https://saucelabs.com)
-
-### Join the community
-
-Get in touch!
-
-* Chat in our [Gitter chat room](https://gitter.im/TerriaJS/terriajs)
-* Join the [TerriaJS Google Group](https://groups.google.com/forum/#!forum/terriajs)
-* Raise issues in the [Github issue tracker](https://github.com/TerriaJS/terriajs/issues/new)
