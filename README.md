@@ -37,9 +37,6 @@
   * [Technical](#technical)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -60,7 +57,6 @@ LeylineJS is a library for building rich, web-based geospatial data explorers, u
 * Time dimensions supported for CSV, CZML, WMS. Automatically animate layers, or slide the time control forward and backward.
 * Drag-and-drop files from your desktop to the browser, for instant visualisation (no file upload to server required).
 * Wider range of file types supported through server-side OGR2OGR service (requires upload).
-* All ASGS (Australian Statistical Geographic Standard) region types (LGA, SA2, commonwealth electoral district etc) supported for [CSV region mapping](https://github.com/TerriaJS/nationalmap/wiki/csv-geo-au), plus several others: Primary Health Networks, Statistical Local Areas, ISO 3 letter country codes, etc.
 * Users can generate a reusable URL link of their current map view, to quickly share mashups of web-hosted data.
 
 ### Technical
@@ -82,35 +78,6 @@ LeylineJS is a library for building rich, web-based geospatial data explorers, u
 The easiest way to build your own Terria-based map is using the TerriaMap starting point. This gives you the HTML structure, server and build processes you need to get a site up and running immediately.
 
 See [Getting Started](https://docs.leylines.net/guide/getting-started/) in the [Documentation](https://docs.leylines.net/guide/) for all the details.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* NPM
-```sh
-npm install npm@latest -g
-```
-
-### Installation
-
-1. Clone the repo
-```sh
-git clone https://github.com/leylines/leylinesjs.git
-```
-2. Install NPM packages
-```sh
-npm install
-```
-3. Build Docs
-```sh
-npm run gulp
-```
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-_For more examples, please refer to the [Documentation](https://docs.leylines.net/getting-started)_
-
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -150,8 +117,8 @@ Project Link: [https://github.com/leylines/leylinesjs](https://github.com/leylin
 * **[TerriaMap](https://github.com/TerriaJS/TerriaMap)** is a complete website starting point, using TerriaJS.
 * **[TerriaJS-Server](https://github.com/TerriaJS/TerriaJS-Server)** is a NodeJS-based server that provides proxying and support services for TerriaJS.
 * **[NationalMap](https://github.com/NICTA/NationalMap)** is the flagship Terria deployment, and the origin of the TerriaJS library.
-* [Choose an Open Source License](https://choosealicense.com)
-* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+* **$[Choose an Open Source License](https://choosealicense.com)**
+* **[Best-README-Template](https://github.com/othneildrew/Best-README-Template)**
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
