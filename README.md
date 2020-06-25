@@ -117,7 +117,7 @@ Project Link: [https://github.com/leylines/leylinesjs](https://github.com/leylin
 * **[TerriaMap](https://github.com/TerriaJS/TerriaMap)** is a complete website starting point, using TerriaJS.
 * **[TerriaJS-Server](https://github.com/TerriaJS/TerriaJS-Server)** is a NodeJS-based server that provides proxying and support services for TerriaJS.
 * **[NationalMap](https://github.com/NICTA/NationalMap)** is the flagship Terria deployment, and the origin of the TerriaJS library.
-* **$[Choose an Open Source License](https://choosealicense.com)**
+* **[Choose an Open Source License](https://choosealicense.com)**
 * **[Best-README-Template](https://github.com/othneildrew/Best-README-Template)**
 
 <!-- MARKDOWN LINKS & IMAGES -->
