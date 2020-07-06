@@ -61,7 +61,7 @@ const AugmentedVirtualityTool = createReactClass({
         title: t("AR.manualAlignmentTitle"),
         message: t("AR.manualAlignmentMessage", {
           img:
-            '<img width="100%" src="./build/TerriaJS/images/ar-realign-guide.gif" />'
+            '<img width="100%" src="./build/LeylinesJS/images/ar-realign-guide.gif" />'
         }),
         confirmText: t("AR.confirmText")
       });
