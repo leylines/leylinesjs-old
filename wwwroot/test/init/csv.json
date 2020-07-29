@@ -14,7 +14,7 @@
                         "name": "Moving features (sampled)",
                         "nameInCatalog": "Sampled",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/lat_lon_enum_date_id.csv",
+                        "url": "build/LeylinesJS/test/csv/lat_lon_enum_date_id.csv",
                         "idColumns": ["id"],
                         "tableStyle": {
                             "dataVariable": "value",
@@ -25,7 +25,7 @@
                         "name": "Moving features turned off with []",
                         "nameInCatalog": "Turned off with []",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/lat_lon_enum_date_id.csv",
+                        "url": "build/LeylinesJS/test/csv/lat_lon_enum_date_id.csv",
                         "idColumns": [],
                         "tableStyle": {
                             "dataVariable": "value",
@@ -36,7 +36,7 @@
                         "name": "Moving features turned off with null",
                         "nameInCatalog": "Turned off with null",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/lat_lon_enum_date_id.csv",
+                        "url": "build/LeylinesJS/test/csv/lat_lon_enum_date_id.csv",
                         "idColumns": null,
                         "tableStyle": {
                             "dataVariable": "value",
@@ -47,7 +47,7 @@
                         "name": "Moving features (sampled, with info template)",
                         "nameInCatalog": "Sampled, with info template",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/lat_lon_enum_date_id.csv",
+                        "url": "build/LeylinesJS/test/csv/lat_lon_enum_date_id.csv",
                         "idColumns": ["id"],
                         "tableStyle": {
                             "dataVariable": "value",
@@ -59,7 +59,7 @@
                         "name": "Moving features (sampled, with manual info template)",
                         "nameInCatalog": "Sampled, with manual info template",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/lat_lon_enum_date_id.csv",
+                        "url": "build/LeylinesJS/test/csv/lat_lon_enum_date_id.csv",
                         "idColumns": ["id"],
                         "tableStyle": {
                             "dataVariable": "value",
@@ -77,7 +77,7 @@
                         "name": "Moving features (not sampled)",
                         "nameInCatalog": "Not sampled",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/lat_lon_enum_date_id.csv",
+                        "url": "build/LeylinesJS/test/csv/lat_lon_enum_date_id.csv",
                         "idColumns": ["id"],
                         "isSampled": false,
                         "tableStyle": {
@@ -116,28 +116,28 @@
                     {
                         "name": "Melbourne postcodes with time column",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/postcode_val_enum_time.csv"
+                        "url": "build/LeylinesJS/test/csv/postcode_val_enum_time.csv"
                     },
                     {
                         "name": "WA postcodes with start and end dates",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/postcode_val_enum_start_end.csv",
-                        "isSampled": false // Suppresses the chart over time in feature info, which looks bad.
+                        "url": "build/LeylinesJS/test/csv/postcode_val_enum_start_end.csv",
+                        "isSampled": false
                     },
                     {
                         "name": "Melbourne postcodes with time column and template",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/postcode_val_enum_time.csv",
+                        "url": "build/LeylinesJS/test/csv/postcode_val_enum_time.csv",
                         "featureInfoTemplate": "<p>Postcode: {{postcode}}</p><p>Time: {{time}}</p><p>Val1: {{val1}}</p><p>Enum: {{enum}}</enum>"
                     },
                     {
                         "name": "Lat/lon CSV with duration of 1 hour",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/lat_lon_date_value.csv",
+                        "url": "build/LeylinesJS/test/csv/lat_lon_date_value.csv",
                         "tableStyle": {
                             "displayDuration": 60
                         }
-                    },
+                    }
                 ]
             },
             {
@@ -277,7 +277,7 @@
                     {
                         "name": "Lat/lon with too many enum values",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/lat_lon_enum_lots.csv",
+                        "url": "build/LeylinesJS/test/csv/lat_lon_enum_lots.csv",
                         "tableStyle": {
                             "colorBins": 9
                         }
@@ -285,7 +285,7 @@
                     {
                         "name": "Lat/lon with 9 enum values and 9 bins",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/lat_lon_enum_lots2.csv",
+                        "url": "build/LeylinesJS/test/csv/lat_lon_enum_lots2.csv",
                         "tableStyle": {
                             "colorBins": 9
                         }
@@ -293,7 +293,7 @@
                     {
                         "name": "Postcodes with 9 enum values and 9 bins",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/postcode_enum_lots2.csv",
+                        "url": "build/LeylinesJS/test/csv/postcode_enum_lots2.csv",
                         "tableStyle": {
                             "colorBins": 9
                         }
@@ -301,7 +301,7 @@
                     {
                         "name": "Postcodes with too many enum values",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/postcode_enum_lots.csv",
+                        "url": "build/LeylinesJS/test/csv/postcode_enum_lots.csv",
                         "tableStyle": {
                             "colorBins": 9
                         }
@@ -309,7 +309,7 @@
                     {
                         "name": "RDA LGA 2015 (Top)",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/RDA_LGA_2015_16.csv",
+                        "url": "build/LeylinesJS/test/csv/RDA_LGA_2015_16.csv",
                         "tableStyle": {
                             "dataVariable": "RDA_NAME",
                             "colorBinMethod": "top"
@@ -318,7 +318,7 @@
                     {
                         "name": "RDA LGA 2015 (Color cycling)",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/RDA_LGA_2015_16.csv",
+                        "url": "build/LeylinesJS/test/csv/RDA_LGA_2015_16.csv",
                         "tableStyle": {
                             "dataVariable": "RDA_NAME",
                             "colorBinMethod": "cycle"
@@ -342,7 +342,7 @@
                     {
                         "name": "Lat/lon CSV with no other columns",
                         "type": "csv",
-                        "url": "build/TerriaJS/test/csv/lat_lon.csv"
+                        "url": "build/LeylinesJS/test/csv/lat_lon.csv"
                     },
                     {
                         "name": "Csv with LATIN-1 encoding not specified by server",

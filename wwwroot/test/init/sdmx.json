@@ -14,42 +14,42 @@
                         "name": "Simple example",
                         "type": "sdmx-json",
                         "sortValues": true,
-                        "url": "build/TerriaJS/test/SDMX-JSON/data-foo-2013.json",
+                        "url": "build/LeylinesJS/test/SDMX-JSON/data-foo-2013.json",
                         "dataflowUrlComponent": ""
                     },
                     {
                         "name": "Example with no choices",
                         "type": "sdmx-json",
                         "sortValues": true,
-                        "url": "build/TerriaJS/test/SDMX-JSON/data-no-concepts-2013.json",
+                        "url": "build/LeylinesJS/test/SDMX-JSON/data-no-concepts-2013.json",
                         "dataflowUrlComponent": ""
                     },
                     {
                         "name": "Two dimensions",
                         "type": "sdmx-json",
                         "sortValues": true,
-                        "url": "build/TerriaJS/test/SDMX-JSON/data-foo2-2013.json",
+                        "url": "build/LeylinesJS/test/SDMX-JSON/data-foo2-2013.json",
                         "dataflowUrlComponent": ""
                     },
                     {
                         "name": "Time varying",
                         "type": "sdmx-json",
                         "sortValues": true,
-                        "url": "build/TerriaJS/test/SDMX-JSON/data-foo-BD2-2011_2013.json",
+                        "url": "build/LeylinesJS/test/SDMX-JSON/data-foo-BD2-2011_2013.json",
                         "dataflowUrlComponent": ""
                     },
                     {
                         "name": "Data as observations not series",
                         "type": "sdmx-json",
                         "sortValues": true,
-                        "url": "build/TerriaJS/test/SDMX-JSON/data-as-observations.json",
+                        "url": "build/LeylinesJS/test/SDMX-JSON/data-as-observations.json",
                         "dataflowUrlComponent": ""
                     },
                     {
                         "name": "Data as observations, hidden repeated dimension",
                         "type": "sdmx-json",
                         "sortValues": true,
-                        "url": "build/TerriaJS/test/SDMX-JSON/data-as-obs-repeated-dim.json",
+                        "url": "build/LeylinesJS/test/SDMX-JSON/data-as-obs-repeated-dim.json",
                         "aggregatedDimensionIds": ["STATE"],
                         "totalValueIds": {
                             "*": ["TOT"],
@@ -61,7 +61,7 @@
                         "name": "Non-spatial",
                         "type": "sdmx-json",
                         "sortValues": true,
-                        "url": "build/TerriaJS/test/SDMX-JSON/data-nonspatial.json",
+                        "url": "build/LeylinesJS/test/SDMX-JSON/data-nonspatial.json",
                         "dataflowUrlComponent": ""
                     }
                 ]

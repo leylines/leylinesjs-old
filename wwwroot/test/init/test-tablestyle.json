@@ -14,7 +14,7 @@
         {
           "name": "Green-orange postcodes",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "colorMap": "green-orange"
@@ -23,7 +23,7 @@
         {
           "name": "Color brewer 7-class Set3",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "colorPalette": "7-class Set3"
@@ -32,7 +32,7 @@
         {
           "name": "No color bins (linear scale)",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "colorBins": 0
@@ -41,7 +41,7 @@
         {
           "name": "50 color bins",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "colorBins": 50,
@@ -51,7 +51,7 @@
         {
           "name": "Array of color bins",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "colorBins": [3000, 3100, 3800, 3850, 3950, 4000],
@@ -61,7 +61,7 @@
         {
           "name": "Array of color bins (subset only)",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "colorBins": [3200, 3350, 3800, 3850, 3900],
@@ -71,7 +71,7 @@
         {
           "name": "Array of color bins (superset)",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "colorBins": [2000, 2500, 3200, 3350, 3800, 3850, 3900, 5000, 8000],
@@ -81,7 +81,7 @@
         {
           "name": "Color brewer 10-class Set3",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "colorPalette": "10-class Set3",
@@ -129,7 +129,7 @@
         {
           "name": "Color brewer 9-class Set1 stretched to 10",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "colorPalette": "9-class Set1",
@@ -139,7 +139,7 @@
         {
           "name": "Color brewer 10-class BrBG",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "colorPalette": "10-class BrBG",
@@ -149,7 +149,7 @@
         {
           "name": "Color brewer Spectral",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "tableStyle": {
             "colorPalette": "Spectral"
           },
@@ -158,7 +158,7 @@
         {
           "name": "More postcode testing",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/val_enum_postcode.csv",
+          "url": "/build/LeylinesJS/test/csv/val_enum_postcode.csv",
           "tableStyle": {
             "colorMap": "green-hsla(0,50%,50%,0.2)"
           },
@@ -168,7 +168,7 @@
         {
           "name": "All Victorian postcodes",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "colorMap": "green-hsl(120,100%,70%)-white-hsl(0,100%,70%)-red",
@@ -185,7 +185,7 @@
         {
           "name": "Mod10 as enum, Mod100 Spectral",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "colorMap": "black-orange",
@@ -208,7 +208,7 @@
         {
           "name": "Values formatted as numbers",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "columns": {
@@ -225,7 +225,7 @@
         {
           "name": "Template with new names",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/3000s.csv",
+          "url": "/build/LeylinesJS/test/csv/3000s.csv",
           "opacity": 1,
           "tableStyle": {
             "columns": {
@@ -239,7 +239,7 @@
         {
           "name": "Value column hidden on Now Viewing",
           "type": "csv",
-          "url": "/build/TerriaJS/test/csv/val_enum_postcode.csv",
+          "url": "/build/LeylinesJS/test/csv/val_enum_postcode.csv",
           "opacity": 1,
           "tableStyle": {
             "columns": {
