@@ -1,16 +1,13 @@
 import React from 'react';
 import createReactClass from 'create-react-class';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import addUserCatalogMember from '../../../../Models/addUserCatalogMember';
-import createCatalogItemFromFileOrUrl from '../../../../Models/createCatalogItemFromFileOrUrl';
 import createCatalogMemberFromType from '../../../../Models/createCatalogMemberFromType';
 import Dropdown from '../../../Generic/Dropdown';
 import getGridType from './getGridType.js';
 import ObserveModelMixin from '../../../ObserveModelMixin';
 import TerriaError from '../../../../Core/TerriaError';
-import addUserFiles from '../../../../Models/addUserFiles';
 import checkGridInput from '../../../../Models/checkGridInput';
 
 import Styles from './add-grid-data.scss';
@@ -18,8 +15,7 @@ import Styles from './add-grid-data.scss';
 // Local and remote data have different dataType options
 const gridType = getGridType().gridType;
 const baseURL = window.location.protocol + "//" + window.location.host + "/api/createGrid/";
-var gridLevel = [{ value: 'points', name: 'Points' },{ value: '1', name: 'Main Lines' }, { value: '2', name: 'Minor Lines' }, { value: 'area', name: 'Areas' } ]
-
+const gridLevel = [{ value: 'points', name: 'Points' },{ value: '1', name: 'Main Lines' }, { value: '2', name: 'Minor Lines' }, { value: 'area', name: 'Areas' } ];
 
 /**
  * Add data panel in modal window -> Create Grid tab
@@ -28,8 +24,8 @@ const AddGridData = createReactClass({
     mixins: [ObserveModelMixin],
 
     propTypes: {
-        terria: React.PropTypes.object,
-        viewState: React.PropTypes.object
+        terria: PropTypes.object,
+        viewState: PropTypes.object
     },
 
     getInitialState() {
@@ -57,26 +53,28 @@ const AddGridData = createReactClass({
         });
     },
 
-
     handleUrl(e) {
         const url = this.state.remoteUrl;
         e.preventDefault();
         this.props.terria.analytics.logEvent('addDataUrl', url);
         const that = this;
+        let promise;
         if (checkGridInput(that.props, that.state)) {
-            let promise;
-            const newItem = createCatalogMemberFromType('czml', that.props.terria);
+            const newItem = createCatalogMemberFromType(
+              'czml',
+              that.props.terria
+			);
             newItem.name = '[' + that.state.gridType.value + '][' + that.state.xCoord + '][' + that.state.yCoord + '][' + that.state.angle + '][' + that.state.gridLevel.value + ']';
             newItem.url = url;
             promise = newItem.load().then(function () {
                 return newItem;
             });
-            addUserCatalogMember(this.props.terria, promise).then(addedItem => {
-                if (addedItem && !(addedItem instanceof TerriaError)) {
-                    this.props.viewState.myDataIsUploadView = false;
-                }
-            });
         }
+        addUserCatalogMember(this.props.terria, promise).then(addedItem => {
+            if (addedItem && !(addedItem instanceof TerriaError)) {
+                this.props.viewState.myDataIsUploadView = false;
+            }
+        });
     },
 
     onXCoordChange(event) {
@@ -159,12 +157,5 @@ const AddGridData = createReactClass({
         );
     }
 });
-
-/**
- * Loads a catalog item from a file.
- */
-function loadFile(viewModel) {
-    return createCatalogItemFromFileOrUrl(viewModel.props.terria, viewModel.props.viewState, viewModel.state.remoteUrl, viewModel.state.remoteDataType.value, true);
-}
 
 module.exports = AddGridData;

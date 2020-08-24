@@ -16,8 +16,8 @@ const CreateGridTab = createReactClass({
     mixins: [ObserveModelMixin],
 
     propTypes: {
-        terria: React.PropTypes.object,
-        viewState: React.PropTypes.object
+        terria: PropTypes.object,
+        viewState: PropTypes.object
     },
 
     onBackButtonClicked() {
