@@ -1,6 +1,28 @@
 Change Log
 ==========
 
+### Next Release
+
+
+### v7.11.10
+
+* Remove caching from TerriaJsonCatalogFunction requests.
+* Upgraded minimum node-sass version to one that has binaries for node v14.
+
+### v7.11.9
+
+* Update Geoscience Australia Topo basemap.
+* Remove caching from WPS requests.
+* Fix entity outline alpha value when de-selecting a feature.
+
+### v7.11.8
+
+* Upgraded to terriajs-cesium v1.71.3 which fixes a bug running gulp tasks on node v14.
+
+### v7.11.7
+
+* Add additional region mapping boundaries.
+
 ### v7.11.6
 
 * Rework the handling of point datasets on the anti-meridian when using LeafletJS.

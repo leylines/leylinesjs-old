@@ -48,6 +48,22 @@
 
 LeylineJS is a library for building rich, web-based geospatial data explorers, used to drive [leylines.net](https://maps.leylines.net).  It uses [Cesium](https://cesiumjs.org) and WebGL for a full 3D globe in the browser with no plugins.  It gracefully falls back to 2D with [Leaflet](http://leafletjs.com/) on systems that can't run Cesium. It can handle catalogs of thousands of layers, with dozens of geospatial file and web service types supported. It is almost entirely JavaScript in the browser, meaning it can even be deployed as a static website, making it simple and cheap to host.
 
+--------------------
+
+**We are currently working on a brand new version of Terria &mdash; verson 8!**
+
+We will soon be posting docs outlining this new version: 
+
+- how it differs from the current version 
+- how it will impact users (including guides and tools to help you upgrade)
+- release roadmap (including which features are supported or in development)
+
+Stay tuned!
+
+**Can't wait? Go here for the *next* Terria:** https://github.com/TerriaJS/terriajs/tree/next
+
+--------------------
+
 ### Features
 * Nested catalog of layers which can be independently enabled to create mashups of many layers.
 * Supports GeoJSON, KML, CSV (point and region-mapped), GPX and CZML file types natively, and others including zipped shapefiles with an optional server-side conversion service.
