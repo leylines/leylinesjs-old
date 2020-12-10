@@ -1,63 +1,86 @@
-import React from "react";
-
-import createReactClass from "create-react-class";
-
+import { runInAction } from "mobx";
+import { observer } from "mobx-react";
 import PropTypes from "prop-types";
+import React from "react";
+import { withTranslation } from "react-i18next";
 import defined from "terriajs-cesium/Source/Core/defined";
+import getPath from "../../Core/getPath";
+import Mappable from "../../Models/Mappable";
+import raiseErrorToUser from "../../Models/raiseErrorToUser";
+import measureElement from "../HOCs/measureElement";
+import SharePanel from "../Map/Panels/SharePanel/SharePanel.jsx";
 import DataPreviewMap from "./DataPreviewMap";
 import Description from "./Description";
-import measureElement from "../measureElement";
-import ObserveModelMixin from "../ObserveModelMixin";
 import Styles from "./mappable-preview.scss";
-import SharePanel from "../Map/Panels/SharePanel/SharePanel.jsx";
-import { withTranslation } from "react-i18next";
+
+/**
+ * @typedef {object} Props
+ * @prop {Terria} terria
+ * @prop {Mappable} previewed
+ * @prop {ViewState} viewState
+ *
+ */
 
 /**
  * CatalogItem preview that is mappable (as opposed to say, an analytics item that can't be displayed on a map without
  * configuration of other parameters.
+ * @extends {React.Component<Props>}
  */
-const MappablePreview = createReactClass({
-  displayName: "MappablePreview",
-  mixins: [ObserveModelMixin],
-
-  propTypes: {
+@observer
+class MappablePreview extends React.Component {
+  static propTypes = {
     previewed: PropTypes.object.isRequired,
     terria: PropTypes.object.isRequired,
     viewState: PropTypes.object.isRequired,
     widthFromMeasureElementHOC: PropTypes.number,
     t: PropTypes.func.isRequired
-  },
+  };
 
-  toggleOnMap(event) {
-    this.props.previewed.toggleEnabled();
-    this.props.terria.checkNowViewingForTimeWms();
+  async toggleOnMap(event) {
     if (defined(this.props.viewState.storyShown)) {
-      this.props.viewState.storyShown = false;
+      runInAction(() => (this.props.viewState.storyShown = false));
     }
-    if (
-      this.props.previewed.isEnabled === true &&
-      !event.shiftKey &&
-      !event.ctrlKey
-    ) {
-      this.props.viewState.explorerPanelIsVisible = false;
-      this.props.viewState.mobileView = null;
+
+    const keepCatalogOpen = event.shiftKey || event.ctrlKey;
+    const toAdd = !this.props.terria.workbench.contains(this.props.previewed);
+
+    try {
+      if (toAdd) {
+        this.props.terria.timelineStack.addToTop(this.props.previewed);
+        await this.props.terria.workbench.add(this.props.previewed);
+      } else {
+        this.props.terria.timelineStack.remove(this.props.previewed);
+        this.props.terria.workbench.remove(this.props.previewed);
+      }
+      if (
+        this.props.terria.workbench.contains(this.props.previewed) &&
+        !keepCatalogOpen
+      ) {
+        this.props.viewState.closeCatalog();
+        this.props.terria.analytics?.logEvent(
+          "dataSource",
+          toAdd ? "addFromPreviewButton" : "removeFromPreviewButton",
+          getPath(this.props.previewed)
+        );
+      }
+    } catch (e) {
+      raiseErrorToUser(this.props.terria, e);
     }
-  },
+  }
 
   backToMap() {
     this.props.viewState.explorerPanelIsVisible = false;
-  },
+  }
 
   render() {
     const { t } = this.props;
-    const catalogItem =
-      this.props.previewed.nowViewingCatalogItem || this.props.previewed;
+    const catalogItem = this.props.previewed;
     return (
       <div className={Styles.root}>
-        <If condition={catalogItem.isMappable && !catalogItem.disablePreview}>
+        <If condition={Mappable.is(catalogItem) && !catalogItem.disablePreview}>
           <DataPreviewMap
             terria={this.props.terria}
-            previewedCatalogItem={catalogItem}
+            previewed={catalogItem}
             showMap={
               !this.props.viewState.explorerPanelAnimating ||
               this.props.viewState.useSmallScreenInterface
@@ -66,10 +89,10 @@ const MappablePreview = createReactClass({
         </If>
         <button
           type="button"
-          onClick={this.toggleOnMap}
+          onClick={this.toggleOnMap.bind(this)}
           className={Styles.btnAdd}
         >
-          {this.props.previewed.isEnabled
+          {this.props.terria.workbench.contains(catalogItem)
             ? t("preview.removeFromMap")
             : t("preview.addToMap")}
         </button>
@@ -81,7 +104,7 @@ const MappablePreview = createReactClass({
             <h3 className={Styles.h3}>{catalogItem.name}</h3>
             <If
               condition={
-                catalogItem.dataUrlType !== "local" &&
+                !catalogItem.hasLocalData &&
                 !this.props.viewState.useSmallScreenInterface
               }
             >
@@ -101,6 +124,6 @@ const MappablePreview = createReactClass({
       </div>
     );
   }
-});
+}
 
 export default withTranslation()(measureElement(MappablePreview));

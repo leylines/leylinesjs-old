@@ -2,11 +2,11 @@ name: npm-publish
 on:
   push:
     branches:
-      - master
+      - next
 
 jobs:
   publish:
-    name: Publish to NPM on version change
+    name: Publish to NPM
     runs-on: ubuntu-latest
 
     steps:
@@ -46,7 +46,7 @@ jobs:
 
       - name: Publish package to NPM
         if: steps.detect.outputs.previous-version != steps.detect.outputs.current-version
-        run: npm publish --tag latest
+        run: npm publish --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 

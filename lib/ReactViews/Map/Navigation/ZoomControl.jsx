@@ -10,7 +10,7 @@ const Ellipsoid = require("terriajs-cesium/Source/Core/Ellipsoid").default;
 const Tween = require("terriajs-cesium/Source/ThirdParty/Tween").default;
 const CesiumMath = require("terriajs-cesium/Source/Core/Math").default;
 const Cartesian3 = require("terriajs-cesium/Source/Core/Cartesian3").default;
-import Icon from "../../Icon.jsx";
+import Icon from "../../Icon";
 import Styles from "./zoom_control.scss";
 import { withTranslation } from "react-i18next";
 
@@ -117,7 +117,7 @@ const ZoomControl = createReactClass({
       this.flyToPosition(scene, endPosition);
     }
 
-    this.props.terria.currentViewer.notifyRepaintRequired();
+    // this.props.terria.currentViewer.notifyRepaintRequired();
   },
 
   zoomOut() {
@@ -149,12 +149,15 @@ const ZoomControl = createReactClass({
       );
       this.flyToPosition(scene, endPosition);
     }
-    this.props.terria.currentViewer.notifyRepaintRequired();
+    // this.props.terria.currentViewer.notifyRepaintRequired();
   },
 
   zoomReset() {
     this.props.terria.analytics.logEvent("navigation", "click", "reset");
-    this.props.terria.currentViewer.zoomTo(this.props.terria.homeView, 1.5);
+    this.props.terria.currentViewer.zoomTo(
+      this.props.terria.mainViewer.homeCamera,
+      1.5
+    );
   },
 
   render() {
@@ -169,7 +172,7 @@ const ZoomControl = createReactClass({
               className={Styles.increase}
               title={t("zoomCotrol.zoomIn")}
             >
-              <Icon glyph={Icon.GLYPHS.increase} />
+              <Icon glyph={Icon.GLYPHS.plusThick} />
             </button>
           </li>
           <li>
@@ -179,7 +182,7 @@ const ZoomControl = createReactClass({
               className={Styles.refresh}
               title={t("zoomCotrol.zoomReset")}
             >
-              <Icon glyph={Icon.GLYPHS.refresh} />
+              <Icon glyph={Icon.GLYPHS.refreshThick} />
             </button>
           </li>
           <li>
@@ -189,7 +192,7 @@ const ZoomControl = createReactClass({
               className={Styles.decrease}
               title={t("zoomCotrol.zoomOut")}
             >
-              <Icon glyph={Icon.GLYPHS.decrease} />
+              <Icon glyph={Icon.GLYPHS.minusThick} />
             </button>
           </li>
         </ul>

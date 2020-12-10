@@ -8,17 +8,19 @@ import URI from "urijs";
 import Rectangle from "terriajs-cesium/Source/Core/Rectangle";
 
 import GeoJsonCatalogItem from "../../../Models/GeoJsonCatalogItem";
-import ObserveModelMixin from "../../ObserveModelMixin";
-import Styles from "./tool_button.scss";
+// import Styles from "./tool_button.scss";
 import TerriaError from "../../../Core/TerriaError";
 import CesiumCartographic from "terriajs-cesium/Source/Core/Cartographic.js";
-import Icon from "../../Icon.jsx";
+import Icon from "../../Icon";
 import defined from "terriajs-cesium/Source/Core/defined";
 import { withTranslation } from "react-i18next";
+import { runInAction } from "mobx";
+import CommonStrata from "../../../Models/CommonStrata";
+import createGuid from "terriajs-cesium/Source/Core/createGuid";
+import MapIconButton from "../../MapIconButton/MapIconButton";
 
 const MyLocation = createReactClass({
   displayName: "MyLocation",
-  mixins: [ObserveModelMixin],
 
   propTypes: {
     terria: PropTypes.object.isRequired,
@@ -29,7 +31,7 @@ const MyLocation = createReactClass({
 
   /* eslint-disable-next-line camelcase */
   UNSAFE_componentWillMount() {
-    this._marker = new GeoJsonCatalogItem(this.props.terria);
+    this._marker = new GeoJsonCatalogItem(createGuid(), this.props.terria);
   },
 
   getInitialState() {
@@ -100,30 +102,34 @@ const MyLocation = createReactClass({
       this.props.terria.currentViewer.zoomTo(rectangle);
     }
 
-    this._marker.name = t("location.myLocation");
-    this._marker.data = {
-      type: "Feature",
-      geometry: {
-        type: "Point",
-        coordinates: [longitude, latitude]
-      },
-      properties: {
-        title: t("location.location"),
-        longitude: longitude,
-        latitude: latitude
-      }
-    };
-    this._marker.style = {
-      "marker-size": 25,
-      "marker-color": "#08ABD5",
-      stroke: "#ffffff",
-      "stroke-width": 3
-    };
+    runInAction(() => {
+      this._marker.setTrait(
+        CommonStrata.user,
+        "name",
+        t("location.myLocation")
+      );
+      this._marker.setTrait(CommonStrata.user, "geoJsonData", {
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: [longitude, latitude]
+        },
+        properties: {
+          title: t("location.location"),
+          longitude: longitude,
+          latitude: latitude
+        }
+      });
+      this._marker.setTrait(CommonStrata.user, "style", {
+        "marker-size": 25,
+        "marker-color": "#08ABD5",
+        stroke: "#ffffff",
+        "stroke-width": 3
+      });
 
-    this._marker.load();
-    if (this._marker.isEnabled !== true) {
-      this._marker.isEnabled = true;
-    }
+      this._marker.loadMapItems();
+      this.props.terria.workbench.add(this._marker);
+    });
   },
 
   handleLocationError(err) {
@@ -168,7 +174,7 @@ const MyLocation = createReactClass({
     }
   },
 
-  handleCick() {
+  handleClick() {
     if (this.followMeEnabled()) {
       this.disableFollowMe();
     } else {
@@ -177,22 +183,17 @@ const MyLocation = createReactClass({
   },
 
   render() {
-    let toggleStyle = Styles.btn;
-    if (this.followMeEnabled()) {
-      toggleStyle = Styles.btnPrimary;
-    }
     const { t } = this.props;
     return (
-      <div className={Styles.toolButton}>
-        <button
-          type="button"
-          className={toggleStyle}
-          title={t("location.centreMap")}
-          onClick={this.handleCick}
-        >
-          <Icon glyph={Icon.GLYPHS.geolocation} />
-        </button>
-      </div>
+      <MapIconButton
+        primary={this.followMeEnabled()}
+        expandInPlace
+        onClick={this.handleClick}
+        title={t("location.centreMap")}
+        iconElement={() => <Icon glyph={Icon.GLYPHS.geolocationThick} />}
+      >
+        {t("location.location")}
+      </MapIconButton>
     );
   }
 });
