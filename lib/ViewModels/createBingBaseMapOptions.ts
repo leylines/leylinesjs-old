@@ -52,20 +52,20 @@ export default function createBingBaseMapOptions(
     bingMapsAerialWithLabels = createIonCatalogItem({
       id: "basemap-bing-aerial-with-labels",
       name: "Bing Maps Aerial with Labels",
-      assetId: IonWorldImageryStyle.AERIAL_WITH_LABELS,
+      assetId: 3,
       ...params
     });
     bingMapsAerial = createIonCatalogItem({
       id: "basemap-bing-aerial",
       name: "Bing Maps Aerial",
-      assetId: IonWorldImageryStyle.AERIAL,
+      assetId: 2,
       ...params
     });
 
     bingMapsRoads = createIonCatalogItem({
       id: "basemap-bing-road",
       name: "Bing Maps Roads",
-      assetId: IonWorldImageryStyle.ROAD,
+      assetId: 4,
       ...params
     });
   } else {
